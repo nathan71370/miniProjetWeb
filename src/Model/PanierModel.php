@@ -1,50 +1,32 @@
 <?php
+
 namespace App\Model;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 use Silex\Application;
-class PanierModel{
-    /**
-     * Created by PhpStorm.
-     * User: Nathan
-     * Date: 12/11/2017
-     * Time: 13:55
-     */
+
+class PanierModel {
 
     private $db;
 
     public function __construct(Application $app) {
         $this->db = $app['db'];
     }
-
-    public function getAllPanier()
-    {
-        $queryBuilder = new QueryBuilder($this->db);
-        $queryBuilder
-            ->select('p.id', 'p.quantite', 'p.prix', 'p.dateAjoutPanier', 'p.user_id', 'p.produit_id', 'p.commande_id')
-            ->from('paniers', 'p')
-            ->innerJoin('p', 'users', 'u', 'p.user_id=u.id')
-            ->innerJoin('p', 'produits', 'pr', 'p.produit_id=pr.id')
-            ->innerJoin('p', 'commandes', 'c', 'p.commande_id=c.id')
-            ->addOrderBy('p.id', 'ASC');
-        return $queryBuilder->execute()->fetchAll();
-
-    }
+    // http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html#join-clauses
 
     public function insertPanier($donnees) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')
             ->values([
+                'id' => '?',
                 'quantite' => '?',
                 'prix' => '?',
-                //'dateAjoutPanier' => '?',
-                'user_id' => '0',  //à modifier
-                'produit_id' => '0',
-                'commande_id' => '0'
+                'dateAjout' => '?'
             ])
-            ->setParameter(0, $donnees['quantite'])
-            ->setParameter(1, $donnees['prix'])
-            ->setParameter(2, $donnees['dateAjoutPanier'])
+            ->setParameter(0, $donnees['id'])
+            ->setParameter(1, $donnees['quantite'])
+            ->setParameter(2, $donnees['prix'])
+            ->setParameter(3, $donnees['dateAjout'])
         ;
         return $queryBuilder->execute();
     }
@@ -54,9 +36,43 @@ class PanierModel{
         $queryBuilder
             ->select('id', 'quantite', 'prix', 'dateAjoutPanier')
             ->from('paniers')
-            ->where('id= :id')
+            ->where('user_id= :id')
+            ->andWhere('commande_id = NULL')
             ->setParameter('id', $id);
-        return $queryBuilder->execute()->fetch();
+        return $queryBuilder->execute()->fetchAll();
+    }
+
+    function getPanier2($id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('*')
+            ->from('paniers', 'pa')
+            ->innerJoin('pa','produits', 'pr', 'pa.produit_id = pr.id')
+            ->where('pa.user_id= :id')
+            ->andWhere('pa.commande_id IS NULL')
+            ->setParameter('id', $id);
+        return $queryBuilder->execute()->fetchAll();
+    }
+
+
+    public function removeOnePanier($donnees) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->update('paniers')
+            ->set('quantite', 'quantite-1')
+            ->where('id= ?')
+            ->setParameter(1, $donnees['id']);
+        return $queryBuilder->execute();
+    }
+
+    public function addOnePanier($donnees) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->update('paniers')
+            ->set('quantite', 'quantite+1')
+            ->where('id= ?')
+            ->setParameter(1, $donnees['id']);
+        return $queryBuilder->execute();
     }
 
     public function updatePanier($donnees) {
@@ -64,17 +80,13 @@ class PanierModel{
         $queryBuilder
             ->update('paniers')
             ->set('quantite', '?')
-            ->set('prix','?')
-            ->set('dateAjoutPanier','?')
             ->where('id= ?')
             ->setParameter(0, $donnees['quantite'])
-            ->setParameter(1, $donnees['prix'])
-            ->setParameter(2, $donnees['dateAjoutPanier'])
-            ->setParameter(4, $donnees['id']);
+            ->setParameter(1, $donnees['id']);
         return $queryBuilder->execute();
     }
 
-    public function deletePanier($id) {
+    public function deleteProduit($id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->delete('paniers')
@@ -83,4 +95,8 @@ class PanierModel{
         ;
         return $queryBuilder->execute();
     }
+
+
+
+
 }

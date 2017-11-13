@@ -1,14 +1,15 @@
 <?php
 namespace App\Controller;
 
+
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 
 use Symfony\Component\HttpFoundation\Request;   // pour utiliser request
 
+use App\Model\PanierModel;
 use App\Model\ProduitModel;
 use App\Model\TypeProduitModel;
-use App\Model\PanierModel;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraint;
@@ -19,44 +20,26 @@ class ProduitController implements ControllerProviderInterface
 {
     private $produitModel;
     private $typeProduitModel;
-    private $panierModel;
 
 
     public function index(Application $app) {
         return $this->showProduits($app);
     }
 
-    public function showPanier(Application $app) {
-        $this->panierModel = new PanierModel($app);
-        $paniers = $this->panierModel->getAllPanier();
-        return $app["twig"]->render('backOff/Produit/showPanier.html.twig',['data2'=>$paniers]);
-    }
-
     public function showProduits(Application $app) {
         $this->produitModel = new ProduitModel($app);
         $produits = $this->produitModel->getAllProduits();
-        return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits]);
-    }
-    public function addPanier(Application $app) {
-        //$this->typeProduitModel = new TypeProduitModel($app);
-        //$typeProduits = $this->typeProduitModel->getAllTypeProduits();
-        //  dump($typeProduits);
-        //return $app["twig"]->render('backOff/Produit/addProduit.html.twig',['typeProduits'=>$typeProduits]);
+
         $this->panierModel = new PanierModel($app);
-        $this->panierModel->insertPanier($_POST['id']);
-        return $app->redirect($app["url_generator"]->generate("produit.index"));
+        //$app['session']->get('id')
+        $panier = $this->panierModel->getPanier2(1);
+        return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
     }
 
     public function addProduit(Application $app) {
         $this->typeProduitModel = new TypeProduitModel($app);
         $typeProduits = $this->typeProduitModel->getAllTypeProduits();
       //  dump($typeProduits);
-        $donnees = [
-            'quantite' => htmlspecialchars($_POST['quantite']),                    // echapper les entrées
-            'prix' => htmlspecialchars($_POST['prix']),
-            //'dateAjoutPanier' => htmlspecialchars($_POST['dateAjoutPanier']),
-            //'photo' => $app->escape($_POST['photo'])
-        ];
         return $app["twig"]->render('backOff/Produit/addProduit.html.twig',['typeProduits'=>$typeProduits]);
     }
 
@@ -179,12 +162,8 @@ class ProduitController implements ControllerProviderInterface
         $controllers->get('/', 'App\Controller\produitController::index')->bind('produit.index');
         $controllers->get('/show', 'App\Controller\produitController::showProduits')->bind('produit.showProduits');
 
-        $controllers->get('/showPanier', 'App\Controller\produitController::showPanier')->bind('panier.showPanier');
-
         $controllers->get('/add', 'App\Controller\produitController::addProduit')->bind('produit.addProduit');
         $controllers->post('/add', 'App\Controller\produitController::validFormAddProduit')->bind('produit.validFormAddProduit');
-
-        $controllers->get('/addPanier', 'App\Controller\produitController::addPanier')->bind('panier.addPanier');
 
         $controllers->get('/delete/{id}', 'App\Controller\produitController::deleteProduit')->bind('produit.deleteProduit')->assert('id', '\d+');
         $controllers->delete('/delete', 'App\Controller\produitController::validFormDeleteProduit')->bind('produit.validFormDeleteProduit');
@@ -193,5 +172,10 @@ class ProduitController implements ControllerProviderInterface
         $controllers->put('/edit', 'App\Controller\produitController::validFormEditProduit')->bind('produit.validFormEditProduit');
 
         return $controllers;
+    }
+
+    public function addBasket(Application $app){
+
+
     }
 }
