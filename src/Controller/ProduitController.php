@@ -20,6 +20,7 @@ class ProduitController implements ControllerProviderInterface
 {
     private $produitModel;
     private $typeProduitModel;
+    private $panierModel;
 
 
     public function index(Application $app) {
