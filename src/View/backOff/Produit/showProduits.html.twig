@@ -26,6 +26,7 @@
 							<td>
 								<a href="{{ path('produit.editProduit', {id: produit.id}) }}">modifier</a>
 								<a href="{{ path('produit.deleteProduit', {id: produit.id}) }}">supprimer</a>
+								<a href="{{ path('panier.addPanier', {id: produit.id}) }}">ajouter</a>
 							</td>
 						{% endif %}
 					</tr>
@@ -51,8 +52,7 @@
 						</td>
 						{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
 							<td>
-								<a href="{{ path('produit.editProduit', {id: produit.id}) }}">modifier</a>
-								<a href="{{ path('produit.deleteProduit', {id: produit.id}) }}">supprimer</a>
+								<a href="{{ path('panier.deletePanier', {id: produit.id}) }}">supprimer</a>
 							</td>
 						{% endif %}
 					</tr>

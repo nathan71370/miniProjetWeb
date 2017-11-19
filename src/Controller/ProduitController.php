@@ -169,14 +169,36 @@ class ProduitController implements ControllerProviderInterface
         $controllers->get('/delete/{id}', 'App\Controller\produitController::deleteProduit')->bind('produit.deleteProduit')->assert('id', '\d+');
         $controllers->delete('/delete', 'App\Controller\produitController::validFormDeleteProduit')->bind('produit.validFormDeleteProduit');
 
+        $controllers->get('/deletePanier', 'App\Controller\produitController::delete')->bind('panier.deletePanier');
+
         $controllers->get('/edit/{id}', 'App\Controller\produitController::editProduit')->bind('produit.editProduit')->assert('id', '\d+');
         $controllers->put('/edit', 'App\Controller\produitController::validFormEditProduit')->bind('produit.validFormEditProduit');
+
+        $controllers->get('/addPanier', 'App\Controller\produitController::addPanier')->bind('panier.addPanier');
 
         return $controllers;
     }
 
-    public function addBasket(Application $app){
+    public function addPanier(Application $app, Request $req){
+        $this->produitModel = new ProduitModel($app);
+        $this->panierModel = new PanierModel($app);
+        $produit_id=$app->escape($req->get('id'));
+        $client_id=$app['session']->get('user_id');
+        $this->panierModel->insertPanier($produit_id,$client_id);
+        return $app->redirect($app["url_generator"]->generate("produit.index"));
+    }
 
+    public function delete(Application $app, Request $req){
+//        $this->produitModel = new ProduitModel($app);
+//        $this->panierModel = new PanierModel($app);
+//        //$produit_id=$app->escape($req->get('produit_id'));
 
+//        //$quantite=$app->escape($req->get('quantite'));
+//        $this->panierModel->deletePanier($idPanier);
+//        return $app->redirect($app["url_generator"]->generate("produit.index"));
+        $id=$app->escape($req->get('id'));
+        $this->panierModel = new PanierModel($app);
+        $this->panierModel->deletePanier($id);
+        return $app->redirect($app["url_generator"]->generate("produit.index"));
     }
 }

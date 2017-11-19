@@ -14,19 +14,22 @@ class PanierModel {
     }
     // http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html#join-clauses
 
-    public function insertPanier($donnees) {
+    public function insertPanier($donnees,$user) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')
+            //if($donnees['produit_id'])
             ->values([
-                'id' => '?',
+                'produit_id' => '?',
                 'quantite' => '?',
                 'prix' => '?',
-                'dateAjout' => '?'
+                //'dateAjoutPanier' => '?',
+                'user_id' => '?'
             ])
-            ->setParameter(0, $donnees['id'])
-            ->setParameter(1, $donnees['quantite'])
-            ->setParameter(2, $donnees['prix'])
-            ->setParameter(3, $donnees['dateAjout'])
+            ->setParameter(0, $donnees['produit_id'])
+            ->setParameter(1, '1')
+            ->setParameter(2, '1')
+            //->setParameter(3, 'null')
+            ->setParameter(3, $user["user_id"])
         ;
         return $queryBuilder->execute();
     }
@@ -86,13 +89,15 @@ class PanierModel {
         return $queryBuilder->execute();
     }
 
-    public function deleteProduit($id) {
+    public function deletePanier($id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->delete('paniers')
-            ->where('id = :id')
-            ->setParameter('id',(int)$id)
+            ->where('produit_id = :produit_id')
+            ->setParameter('produit_id',(int)$id)
         ;
+        //var_dump($id);
+        //die();
         return $queryBuilder->execute();
     }
 
