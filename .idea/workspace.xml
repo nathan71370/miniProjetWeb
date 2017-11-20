@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="925d37c0-b7ee-496e-be08-f506609be080" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controller/PanierController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routing.php" afterPath="$PROJECT_DIR$/app/routing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/PanierModel.php" afterPath="$PROJECT_DIR$/src/Model/PanierModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" afterPath="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig" afterPath="$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" afterPath="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,70 +38,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="deleteProduit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/deleteProduit.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PanierModel.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/PanierModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+            <state relative-caret-position="498">
+              <caret line="117" column="1" lean-forward="true" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
               <folding>
-                <marker date="1511088003000" expanded="true" signature="3172:3173" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProduitModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/ProduitModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1909">
-              <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-              <folding>
-                <element signature="e#29#66#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S3projet2_v17.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/S3projet2_v17.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-              <folding>
-                <marker date="1510489431829" expanded="true" signature="0:77" ph="DROP TABLE I... " />
-                <marker date="1510489431829" expanded="true" signature="181:324" ph="CREATE TABLE... IF" />
-                <marker date="1510489431829" expanded="true" signature="362:451" ph="INSERT INTO typeProduits... " />
-                <marker date="1510489431829" expanded="true" signature="546:692" ph="CREATE TABLE... IF" />
-                <marker date="1510489431829" expanded="true" signature="724:796" ph="INSERT INTO etats... " />
-                <marker date="1510489431829" expanded="true" signature="894:1300" ph="CREATE TABLE... IF" />
-                <marker date="1510489431829" expanded="true" signature="1304:1709" ph="CREATE TABLE... IF" />
-                <marker date="1510489431829" expanded="true" signature="1713:2083" ph="INSERT INTO produits... " />
-                <marker date="1510489431829" expanded="true" signature="2290:2316" ph="DROP TABLE I... " />
-                <marker date="1510489431829" expanded="true" signature="2452:2984" ph="CREATE TABLE... users" />
-                <marker date="1510489431829" expanded="true" signature="3824:4242" ph="CREATE TABLE... IF" />
-                <marker date="1510489431829" expanded="true" signature="4341:4921" ph="CREATE TABLE... IF" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4278">
-              <caret line="198" column="42" lean-forward="false" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
-              <folding>
-                <element signature="e#34#56#0#PHP" expanded="true" />
+                <element signature="e#27#64#0#PHP" expanded="true" />
+                <marker date="1511186699633" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+                <marker date="1511186699633" expanded="true" signature="4366:4367" ph="..." />
               </folding>
             </state>
           </provider>
@@ -102,9 +55,45 @@
       <file leaf-file-name="showProduits.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
+            <state relative-caret-position="437">
+              <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="74" column="50" lean-forward="true" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+              <folding>
+                <element signature="e#32#54#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showPanier.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+              <folding>
+                <element signature="e#917#947#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PanierController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+              <folding>
+                <element signature="e#32#54#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,15 +118,17 @@
         <option value="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
         <option value="$PROJECT_DIR$/app/config.php" />
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/showPanier.html.twig" />
-        <option value="$PROJECT_DIR$/app/routing.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PanierController.php" />
         <option value="$PROJECT_DIR$/src/View/nav_home.html.twig" />
         <option value="$PROJECT_DIR$/src/View/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/ProduitModel.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7e7f1626-ddac-40f3-a1b4-8f3f15a5bd4f/console.sql" />
-        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
+        <option value="$PROJECT_DIR$/app/routing.php" />
+        <option value="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" />
+        <option value="$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig" />
+        <option value="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/PanierModel.php" />
+        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PanierController.php" />
       </list>
     </option>
   </component>
@@ -169,12 +160,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="miniprojetweb" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniprojetweb" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
@@ -219,12 +217,33 @@
               <item name="backOff" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Produit" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniprojetweb" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniprojetweb" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Panier" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniprojetweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniprojetweb" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Produit" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,7 +289,8 @@
       <workItem from="1510998244463" duration="1026000" />
       <workItem from="1511083349986" duration="5047000" />
       <workItem from="1511091025935" duration="238000" />
-      <workItem from="1511165879296" duration="28000" />
+      <workItem from="1511165879296" duration="308000" />
+      <workItem from="1511183156082" duration="3896000" />
     </task>
     <task id="LOCAL-00001" summary="mieu">
       <created>1510568639499</created>
@@ -307,11 +327,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511091138906</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="mieux mtn">
+      <created>1511165910945</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1511165910945</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24925000" />
+    <option name="totallyTimeSpent" value="29101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -367,7 +394,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
+            <element signature="e#32#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -377,7 +404,9 @@
         <state relative-caret-position="874">
           <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
-            <marker date="1511088003000" expanded="true" signature="3172:3173" ph="..." />
+            <element signature="e#27#64#0#PHP" expanded="true" />
+            <marker date="1511186699633" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+            <marker date="1511186699633" expanded="true" signature="4366:4367" ph="..." />
           </folding>
         </state>
       </provider>
@@ -421,7 +450,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
+            <element signature="e#32#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -431,7 +460,9 @@
         <state relative-caret-position="874">
           <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
-            <marker date="1511088003000" expanded="true" signature="3172:3173" ph="..." />
+            <element signature="e#27#64#0#PHP" expanded="true" />
+            <marker date="1511186699633" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+            <marker date="1511186699633" expanded="true" signature="4366:4367" ph="..." />
           </folding>
         </state>
       </provider>
@@ -476,7 +507,7 @@
         <state relative-caret-position="552">
           <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
+            <element signature="e#32#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -494,7 +525,7 @@
         <state relative-caret-position="552">
           <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
+            <element signature="e#32#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -512,7 +543,7 @@
         <state relative-caret-position="552">
           <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
           <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
+            <element signature="e#32#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,13 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="67" lean-forward="false" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/TypeProduitModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -580,7 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php" />
     <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/showPanier.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -596,74 +619,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/nav_frontOff.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/accueil.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/nav_home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Produit/showProduits.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="84" lean-forward="false" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/backOFFICE.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/frontOFFICE.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -703,16 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4278">
-          <caret line="198" column="42" lean-forward="false" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
-          <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/ProduitModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1909">
@@ -723,12 +672,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/accueil.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/backOFFICE.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/frontOFFICE.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Produit/showProduits.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="66" lean-forward="false" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/nav_frontOff.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/showPanier.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="e#917#947#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="74" column="50" lean-forward="true" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+          <folding>
+            <element signature="e#32#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+          <folding>
+            <element signature="e#32#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/PanierModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="91" column="39" lean-forward="false" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+        <state relative-caret-position="498">
+          <caret line="117" column="1" lean-forward="true" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
           <folding>
-            <marker date="1511088003000" expanded="true" signature="3172:3173" ph="..." />
+            <element signature="e#27#64#0#PHP" expanded="true" />
+            <marker date="1511186699633" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+            <marker date="1511186699633" expanded="true" signature="4366:4367" ph="..." />
           </folding>
         </state>
       </provider>
