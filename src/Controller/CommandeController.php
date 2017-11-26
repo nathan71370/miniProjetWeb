@@ -29,11 +29,17 @@ class CommandeController implements ControllerProviderInterface
         $commande = $this->commandeModel->getCommande();
         return $app["twig"]->render('backOff/Produit/showCommandes.html.twig',['data'=>$commande]);
     }
-    public function insertPanier(Application $app, Request $req){
-        //$id = $_GET['produit_id'];
-        //$quantite = $_GET['quantite'];
+
+    public function insertCommande(Application $app){
+        if($app['session']->get('user_id')!=null){
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=1;
+        }
+        $prix=150;
         $this->commandeModel = new CommandeModel($app);
-        $this->commandeModel->insertCommande($id, $quantite, 1);
+        $this->commandeModel->insertCommande($user_id, $prix);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 

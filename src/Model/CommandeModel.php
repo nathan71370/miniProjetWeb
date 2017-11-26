@@ -12,6 +12,10 @@ use Silex\Application;
 
 class CommandeModel
 {
+    private $db;
+    public function __construct(Application $app) {
+        $this->db = $app['db'];
+    }
     public function insertCommande($user_id,$prix) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('commandes')
@@ -26,5 +30,12 @@ class CommandeModel
             ->setParameter(2, date("Y-m-d H:i:s")   )
             ->setParameter(3, 1);
         return $queryBuilder->execute();
+    }
+    function getCommande() {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('user_id', 'prix', 'date_achat', 'etat_id')
+            ->from('commandes');
+        return $queryBuilder->execute()->fetchAll();
     }
 }

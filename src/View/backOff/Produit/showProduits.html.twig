@@ -83,7 +83,17 @@
                 {% endif %}
 				</tbody>
 			</table>
-			<a href="{{ path('commande.insert') }}">Payer</a>
+            {% if data2 is not empty %}
+			<table>
+				<tbody>
+				<tr>
+					<td>
+						<a href="{{ path('commande.insert') }}">Payer</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+            {% endif %}
 		</div>
 	</div>
 {% endblock %}
