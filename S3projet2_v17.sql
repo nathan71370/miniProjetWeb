@@ -42,18 +42,6 @@ CREATE TABLE IF NOT EXISTS produits (
   CONSTRAINT fk_produits_typeProduits FOREIGN KEY (typeProduit_id) REFERENCES typeProduits (id)
 ) DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS paniers (
-  id int(10) NOT NULL AUTO_INCREMENT,
-  typeProduit_id int(10) DEFAULT NULL,
-  nom varchar(50) DEFAULT NULL,
-  prix float(6,2) DEFAULT NULL,
-  photo varchar(50) DEFAULT NULL,
-  dispo tinyint(4) NOT NULL,
-  stock int(11) NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT fk_produits_typeProduits FOREIGN KEY (typeProduit_id) REFERENCES typeProduits (id)
-) DEFAULT CHARSET=utf8 ;
-
 INSERT INTO produits (id,typeProduit_id,nom,prix,photo,dispo,stock) VALUES
 (1,1, 'produit 1','100','imageProduit.jpeg',1,5),
 (2,1, 'produit 2','5.5','imageProduit.jpeg',1,4),

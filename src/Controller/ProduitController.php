@@ -147,6 +147,7 @@ class ProduitController implements ControllerProviderInterface
         $controllers->get('/edit/{id}', 'App\Controller\produitController::editProduit')->bind('produit.editProduit')->assert('id', '\d+');
         $controllers->put('/edit', 'App\Controller\produitController::validFormEditProduit')->bind('produit.validFormEditProduit');
         $controllers->get('/insert', 'App\Controller\panierController::insertPanier')->bind('panier.insert');
+        $controllers->get('/payer', 'App\Controller\commandeController::insertPanier')->bind('commande.insert');
         return $controllers;
     }
 }

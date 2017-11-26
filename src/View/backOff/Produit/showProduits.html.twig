@@ -60,11 +60,7 @@
 			<table class="large-10 small-12 large-offset-1">
 				<caption>Recapitulatifs du panier (avec twig)</caption>
 				<thead>
-				<tr><th>nom</th><th>quantité</th><th>prix</th><th>dateAjoutPanier</th><th>produit_id</th><th>photo</th>
-					{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
-						<th>opération</th>
-					{% endif %}
-				</tr>
+				<tr><th>nom</th><th>quantité</th><th>prix</th><th>dateAjoutPanier</th><th>produit_id</th><th>photo</th><th>opération</th></tr>
 				</thead>
 				<tbody>
 				{% for produit in data2 if data2 is not empty %}
@@ -85,9 +81,9 @@
 						<td colspan="7" style="text-align: center">Votre panier est vide</td>
 					</tr>
                 {% endif %}
-				<tbody>
-				<tbody>
+				</tbody>
 			</table>
+			<a href="{{ path('commande.insert') }}">Payer</a>
 		</div>
 	</div>
 {% endblock %}
