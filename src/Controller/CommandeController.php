@@ -29,6 +29,11 @@ class CommandeController implements ControllerProviderInterface
         $commande = $this->commandeModel->getCommande();
         return $app["twig"]->render('backOff/Produit/showCommandes.html.twig',['data'=>$commande]);
     }
+    public function showCommandes2(Application $app) {
+        $this->commandeModel = new CommandeModel($app);
+        $commande = $this->commandeModel->getCommande2($app['session']->get('user_id'));
+        return $app["twig"]->render('backOff/Produit/showCommandes.html.twig',['data'=>$commande]);
+    }
 
     public function insertCommande(Application $app){
         if($app['session']->get('user_id')!=null){
@@ -42,6 +47,11 @@ class CommandeController implements ControllerProviderInterface
         $this->commandeModel->insertCommande($user_id, $prix);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
+    public function removeCommande (Application $app) {
+        $this->commandeModel = new CommandeModel($app);
+        $this->commandeModel->deleteCommande($_POST['id']);
+        return $app->redirect($app["url_generator"]->generate("commande.show"));
+    }
 
     /**
      * Returns routes to connect to the given application.
@@ -52,6 +62,9 @@ class CommandeController implements ControllerProviderInterface
      */
     public function connect(Application $app)
     {
+        $controllers = $app['controllers_factory'];
+        $controllers->get('/showcommandeclient', 'App\Controller\produitController::index')->bind('produit.index');
+        return $controllers;
         // TODO: Implement connect() method.
     }
 }

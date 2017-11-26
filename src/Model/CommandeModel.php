@@ -34,8 +34,25 @@ class CommandeModel
     function getCommande() {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('user_id', 'prix', 'date_achat', 'etat_id')
+            ->select('*')
             ->from('commandes');
         return $queryBuilder->execute()->fetchAll();
+    }
+    function getCommande2($user_id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('*')
+            ->from('commandes')
+            ->where('user_id=:userid')
+        ->setParameter('userid', $user_id);
+        return $queryBuilder->execute()->fetchAll();
+    }
+    public function deleteCommande($id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->delete('commandes')
+            ->where('id = :idc')
+            ->setParameter('idc',(int)$id);
+        return $queryBuilder->execute();
     }
 }

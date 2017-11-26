@@ -111,8 +111,7 @@ class PanierModel {
         $queryBuilder
             ->delete('paniers')
             ->where('produit_id = :id')
-            ->setParameter('id',(int)$id)
-        ;
+            ->setParameter('id',(int)$id);
         return $queryBuilder->execute();
     }
 }

@@ -9,10 +9,7 @@
 			<table class="large-10 small-12 large-offset-1">
 				<caption>Recapitulatifs des produits (avec twig)</caption>
 				<thead>
-				<tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th>
-					{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
-						<th>opération</th>
-					{% endif %}
+				<tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>opération</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -29,7 +26,6 @@
 							</td>
 						{% endif %}
                         {% if   app.session.get('roles') is not defined or  app.session.get('roles') != 'ROLE_ADMIN' %}
-							<td>
 							<td>
 								<form method="get" action="{{ path('panier.insert') }}">
 									<div class="row">
@@ -49,7 +45,6 @@
 									</div>
 								</form>
 
-							</td>
 							</td>
                         {% endif %}
 					</tr>
