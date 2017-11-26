@@ -12,7 +12,7 @@ use Silex\Application;
 
 class CommandeModel
 {
-    public function insertPanier($user_id,$prix) {
+    public function insertCommande($user_id,$prix) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('commandes')
             ->values([

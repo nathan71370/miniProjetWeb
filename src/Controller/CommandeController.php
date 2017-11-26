@@ -12,8 +12,6 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\ControllerCollection;
 use Symfony\Component\HttpFoundation\Request;   // pour utiliser request
 use App\Model\CommandeModel;
-use App\Model\ProduitModel;
-use App\Model\TypeProduitModel;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -34,8 +32,8 @@ class CommandeController implements ControllerProviderInterface
     public function insertPanier(Application $app, Request $req){
         //$id = $_GET['produit_id'];
         //$quantite = $_GET['quantite'];
-        $this->panierModel = new PanierModel($app);
-        $this->panierModel->insertPanier($id, $quantite, 1);
+        $this->commandeModel = new CommandeModel($app);
+        $this->commandeModel->insertCommande($id, $quantite, 1);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 
