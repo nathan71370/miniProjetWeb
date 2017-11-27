@@ -56,6 +56,18 @@ class CommandeController implements ControllerProviderInterface
         return $app->redirect($app["url_generator"]->generate("commande.show2"));
     }
 
+    public function expCommande(Application $app, $id){
+        $this->commandeModel = new CommandeModel($app);
+        $this->commandeModel->expeditionCommande($id);
+        return $app->redirect($app["url_generator"]->generate("commande.show"));
+    }
+
+    public function prepCommande(Application $app, $id){
+        $this->commandeModel = new CommandeModel($app);
+        $this->commandeModel->preparationCommande($id);
+        return $app->redirect($app["url_generator"]->generate("commande.show"));
+    }
+
     /**
      * Returns routes to connect to the given application.
      *
@@ -70,7 +82,8 @@ class CommandeController implements ControllerProviderInterface
         $controllers->get('/showCommandes', 'App\Controller\commandeController::showCommandes')->bind('commande.show');
         $controllers->get('/showCommandesClient', 'App\Controller\commandeController::showCommandes2')->bind('commande.show2');
         $controllers->get('/removeCommande/{id}', 'App\Controller\commandeController::removeCommande')->bind('commande.remove')->assert('id', '\d+');
-        $controllers->get('/editCommande', 'App\Controller\commandeController::editCommande')->bind('commande.edit');
+        $controllers->get('/expCommande/{id}', 'App\Controller\commandeController::expCommande')->bind('commande.exp')->assert('id', '\d+');
+        $controllers->get('/prepCommande/{id}', 'App\Controller\commandeController::prepCommande')->bind('commande.prep')->assert('id', '\d+');
         return $controllers;
         // TODO: Implement connect() method.
     }

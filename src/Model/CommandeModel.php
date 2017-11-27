@@ -34,15 +34,17 @@ class CommandeModel
     function getCommande() {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('*')
-            ->from('commandes');
+            ->select('c.id','c.user_id','c.prix','c.date_achat','c.etat_id','e.libelle')
+            ->from('commandes', 'c')
+            ->innerJoin('c','etats', 'e','c.etat_id=e.id');
         return $queryBuilder->execute()->fetchAll();
     }
     function getCommande2($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('*')
-            ->from('commandes')
+            ->select('c.id','c.user_id','c.prix','c.date_achat','c.etat_id','e.libelle')
+            ->from('commandes','c')
+            ->innerJoin('c','etats', 'e','c.etat_id=e.id')
             ->where('user_id=:userid')
         ->setParameter('userid', $user_id);
         return $queryBuilder->execute()->fetchAll();
@@ -56,13 +58,35 @@ class CommandeModel
         return $queryBuilder->execute();
     }
 
+    public function expeditionCommande($id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->update('commandes')
+            ->set('etat_id',2)
+            ->where('id = :idc')
+            ->setParameter('idc',(int)$id);
+        return $queryBuilder->execute();
+    }
+
+    public function preparationCommande($id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->update('commandes')
+            ->set('etat_id',1)
+            ->where('id = :idc')
+            ->setParameter('idc',(int)$id);
+        return $queryBuilder->execute();
+    }
+
     //AVEC TRANSACTION
     public function addCommandeWithTransaction($user){
         $date_achat=date("Y-m-d H:i:s");
         try{
             $this->db->beginTransaction();
-            $requestSQL = $this->db->prepare('SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL');
-            $prix = $requestSQL->fetch()['prix'];
+            $query = "SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL";
+            $result=mysqli_query($query);
+            $row=mysqli_fetch_assoc($result);
+            $prix=$row['userid'];
             $this->db->query("INSERT INTO commandes (user_id, prix, date_achat, etat_id) VALUES ('".$user."','".$prix."', '".$date_achat."', 1);");
             $this->db->commit();
         }

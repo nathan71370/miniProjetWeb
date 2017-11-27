@@ -4,10 +4,10 @@
         <table>
             <caption>Recapitulatifs des commandes (avec twig)</caption>
             <thead>
-            <tr><th>prix</th><th>date_achat</th><th>etat_id</th>
-                    <th>
-                        opérations
-                    </th>
+            <tr>{% if   app.session.get('roles') is defined and app.session.get('roles') == 'ROLE_ADMIN' %}
+                <th>user_id</th>
+                {% endif %}
+                <th>prix</th><th>date_achat</th><th>etat</th><th>opérations</th>
             </tr>
             </thead>
             <tbody>
@@ -17,10 +17,11 @@
                     <td>{{commandes.user_id}}</td>
                     {% endif %}
                         <td>{{commandes.prix}}</td><td>{{commandes.date_achat}}</td><td>
-                        {{commandes.etat_id}}</td>
+                        {{commandes.libelle}}</td>
                         {% if   app.session.get('roles') is defined and app.session.get('roles') == 'ROLE_ADMIN' %}
                          <td>
-                            <a href="{{ path('commande.edit', {id: commandes.id}) }}">modifier</a>
+                            <a href="{{ path('commande.prep', {id: commandes.id}) }}">Preparation</a>
+                             <a href="{{ path('commande.exp', {id: commandes.id}) }}">Expedition</a>
                         </td>
                         {% else %}
                         <td>
