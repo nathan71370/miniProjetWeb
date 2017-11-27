@@ -16,7 +16,7 @@ class CommandeModel
     public function __construct(Application $app) {
         $this->db = $app['db'];
     }
-    public function insertCommande($user_id,$prix) {
+    public function insertCommande($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('commandes')
             ->values([
@@ -83,10 +83,7 @@ class CommandeModel
         $date_achat=date("Y-m-d H:i:s");
         try{
             $this->db->beginTransaction();
-            $query = "SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL";
-            $result=mysqli_query($query);
-            $row=mysqli_fetch_assoc($result);
-            $prix=$row['userid'];
+            $prix=150;
             $this->db->query("INSERT INTO commandes (user_id, prix, date_achat, etat_id) VALUES ('".$user."','".$prix."', '".$date_achat."', 1);");
             $this->db->commit();
         }

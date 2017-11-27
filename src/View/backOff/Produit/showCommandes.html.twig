@@ -1,6 +1,7 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
     <div class="row">
+    {% if data is not empty %}
         <table>
             <caption>Recapitulatifs des commandes (avec twig)</caption>
             <thead>
@@ -32,5 +33,10 @@
             {% endfor %}
             <tbody>
         </table>
+    {% else %}
+        <h1>
+            Pas de commandes en cours
+        </h1>
+        {% endif %}
     </div>
 {% endblock %}

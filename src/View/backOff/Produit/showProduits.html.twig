@@ -9,7 +9,7 @@
 			<table class="large-10 small-12 large-offset-1">
 				<caption>Recapitulatifs des produits (avec twig)</caption>
 				<thead>
-				<tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>opération</th>
+				<tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>Quantité</th><th>Ajouter</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -29,7 +29,6 @@
 							<td>
 								<form method="get" action="{{ path('panier.insert') }}">
 									<div class="row">
-
 										<input name="produit_id"  type="hidden"  size="18" value="{{produit.id}}" />
 										<label>Quantité :
 											<select name="quantite">
@@ -40,12 +39,12 @@
                                                 {% endfor %}
 											</select>
 										</label>
-										<input type="submit" name="Ajouter" value="Ajouter" />
-
 									</div>
-								</form>
-
 							</td>
+						<td>
+								<input type="submit" name="Ajouter" value="Ajouter" />
+						</form>
+						</td>
                         {% endif %}
 					</tr>
 				{% endfor %}
