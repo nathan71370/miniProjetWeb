@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="925d37c0-b7ee-496e-be08-f506609be080" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.php" afterPath="$PROJECT_DIR$/app/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CommandeController.php" afterPath="$PROJECT_DIR$/src/Controller/CommandeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/CommandeModel.php" afterPath="$PROJECT_DIR$/src/Model/CommandeModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/showCommandes.html.twig" afterPath="$PROJECT_DIR$/src/View/backOff/Produit/showCommandes.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
-              <caret line="66" column="55" lean-forward="false" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+              <caret line="68" column="55" lean-forward="false" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
               <folding>
                 <element signature="e#116#142#0#PHP" expanded="true" />
               </folding>
@@ -73,8 +69,8 @@
               <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
               <folding>
                 <element signature="e#111#148#0#PHP" expanded="true" />
-                <marker date="1511779326054" expanded="true" signature="2720:2814" ph="SELECT SUM(p... paniers" />
-                <marker date="1511779326054" expanded="true" signature="2969:3082" ph="INSERT INTO commandes... " />
+                <marker date="1511779434436" expanded="true" signature="192:3413" ph="{...}" />
+                <marker date="1511779434436" expanded="true" signature="3159:3404" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,7 +113,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1467">
               <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-              <folding />
+              <folding>
+                <marker date="1511779420704" expanded="true" signature="111:2859" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,9 +151,9 @@
               <caret line="114" column="41" lean-forward="false" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
               <folding>
                 <element signature="e#27#64#0#PHP" expanded="true" />
-                <marker date="1511775924506" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
-                <marker date="1511775924506" expanded="true" signature="4490:4584" ph="SELECT SUM(p... paniers" />
-                <marker date="1511775924506" expanded="true" signature="4710:4711" ph="..." />
+                <marker date="1511779420697" expanded="true" signature="107:4628" ph="..." />
+                <marker date="1511779420697" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+                <marker date="1511779420697" expanded="true" signature="4627:4628" ph="..." />
               </folding>
             </state>
           </provider>
@@ -339,13 +337,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/routing.php</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Controller/CommandeController.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Controller/ProduitController.php</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/CommandeModel.php</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/PanierModel.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Model/ProduitModel.php</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -551,11 +545,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511710434681</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="mieux mtn">
+      <created>1511779403641</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1511779403642</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53041000" />
+    <option name="totallyTimeSpent" value="53092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -636,7 +637,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1511779420704" expanded="true" signature="111:2859" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -656,9 +659,9 @@
           <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="e#27#64#0#PHP" expanded="true" />
-            <marker date="1511775924506" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
-            <marker date="1511775924506" expanded="true" signature="4490:4584" ph="SELECT SUM(p... paniers" />
-            <marker date="1511775924506" expanded="true" signature="4710:4711" ph="..." />
+            <marker date="1511779420697" expanded="true" signature="107:4628" ph="..." />
+            <marker date="1511779420697" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+            <marker date="1511779420697" expanded="true" signature="4627:4628" ph="..." />
           </folding>
         </state>
       </provider>
@@ -683,7 +686,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1511779420704" expanded="true" signature="111:2859" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -891,9 +896,9 @@
           <caret line="114" column="41" lean-forward="false" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
           <folding>
             <element signature="e#27#64#0#PHP" expanded="true" />
-            <marker date="1511775924506" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
-            <marker date="1511775924506" expanded="true" signature="4490:4584" ph="SELECT SUM(p... paniers" />
-            <marker date="1511775924506" expanded="true" signature="4710:4711" ph="..." />
+            <marker date="1511779420697" expanded="true" signature="107:4628" ph="..." />
+            <marker date="1511779420697" expanded="true" signature="775:848" ph="SELECT quant... paniers" />
+            <marker date="1511779420697" expanded="true" signature="4627:4628" ph="..." />
           </folding>
         </state>
       </provider>
@@ -938,7 +943,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1467">
           <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-          <folding />
+          <folding>
+            <marker date="1511779420704" expanded="true" signature="111:2859" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -968,8 +975,8 @@
           <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
           <folding>
             <element signature="e#111#148#0#PHP" expanded="true" />
-            <marker date="1511779326054" expanded="true" signature="2720:2814" ph="SELECT SUM(p... paniers" />
-            <marker date="1511779326054" expanded="true" signature="2969:3082" ph="INSERT INTO commandes... " />
+            <marker date="1511779434436" expanded="true" signature="192:3413" ph="{...}" />
+            <marker date="1511779434436" expanded="true" signature="3159:3404" ph="..." />
           </folding>
         </state>
       </provider>
@@ -985,7 +992,7 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="66" column="55" lean-forward="false" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+          <caret line="68" column="55" lean-forward="false" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
           <folding>
             <element signature="e#116#142#0#PHP" expanded="true" />
           </folding>
