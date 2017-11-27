@@ -9,17 +9,6 @@ class PanierModel {
     }
     // http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html#join-clauses
     public function insertPanier($id, $quantite, $user_id) {
-        $queryBuilder = new QueryBuilder($this->db);
-        /*
-        $queryBuilder
-            ->select('quantite')
-            ->from('paniers', 'p')
-            ->where('p.produit_id= :id')
-            ->andWhere('p.commande_id IS NULL')
-            ->setParameter('id', $id);
-        $queryBuilder->execute()->fetch();
-        $res = $queryBuilder;
-        */
         $requete="SELECT quantite FROM paniers WHERE produit_id=$id and commande_id is null";
         $select = $this->db->query($requete);
         $res = $select->fetch();
@@ -30,6 +19,8 @@ class PanierModel {
                 ->set('quantite', ($quantite+intval($res['quantite'],10)))
                 ->where('produit_id= :id')
                 ->andWhere('commande_id IS NULL')
+                ->andWhere('user_id= :userid')
+                ->setParameter('userid', $user_id)
                 ->setParameter('id', $id);
         }else{
             $queryBuilder = new QueryBuilder($this->db);
@@ -57,25 +48,25 @@ class PanierModel {
         }
         return $queryBuilder->execute();
     }
-    function getPanier($id) {
+    function getPanier($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->select('id', 'quantite', 'prix', 'dateAjoutPanier')
             ->from('paniers')
-            ->where('user_id= :id')
+            ->where('user_id= :userid')
             ->andWhere('commande_id = NULL')
-            ->setParameter('id', $id);
+            ->setParameter('userid', $user_id);
         return $queryBuilder->execute()->fetchAll();
     }
-    function getPanier2($id) {
+    function getPanier2($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->select('*')
             ->from('paniers', 'pa')
             ->innerJoin('pa','produits', 'pr', 'pa.produit_id = pr.id')
-            ->where('pa.user_id= :id')
+            ->where('pa.user_id= :userid')
             ->andWhere('pa.commande_id IS NULL')
-            ->setParameter('id', $id);
+            ->setParameter('userid', $user_id);
         return $queryBuilder->execute()->fetchAll();
     }
     public function removeOnePanier($donnees) {
@@ -84,7 +75,9 @@ class PanierModel {
             ->update('paniers')
             ->set('quantite', 'quantite-1')
             ->where('produit.id= ?')
-            ->setParameter(1, $donnees['id']);
+            ->andWhere('user_id= ?')
+            ->setParameter(1, $donnees['id'])
+            ->setParameter(2, $donnees['user_id']);
         return $queryBuilder->execute();
     }
     public function addOnePanier($donnees) {
@@ -93,7 +86,9 @@ class PanierModel {
             ->update('paniers')
             ->set('quantite', 'quantite+1')
             ->where('produit.id= ?')
-            ->setParameter(1, $donnees['id']);
+            ->andWhere('user_id= ?')
+            ->setParameter(1, $donnees['id'])
+            ->setParameter(2, $donnees['user_id']);
         return $queryBuilder->execute();
     }
     public function updatePanier($donnees) {
@@ -102,17 +97,21 @@ class PanierModel {
             ->update('paniers')
             ->set('quantite', 'quantite-1')
             ->where('id= ?')
+            ->andWhere('user_id= ?')
             ->setParameter(0, $donnees['quantite'])
-            ->setParameter(1, $donnees['id']);
+            ->setParameter(1, $donnees['id'])
+            ->setParameter(2, $donnees['user_id']);
         return $queryBuilder->execute();
     }
 
-    public function deletePanier($id) {
+    public function deletePanier($id,$user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->delete('paniers')
             ->where('produit_id = :id')
-            ->setParameter('id',(int)$id);
+            ->andWhere('user_id= :userid')
+            ->setParameter('id',(int)$id)
+            ->setParameter('userid', $user_id);
         return $queryBuilder->execute();
     }
 

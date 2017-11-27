@@ -70,9 +70,10 @@ class ProduitController implements ControllerProviderInterface
     public function validFormDeleteProduit(Application $app, Request $req) {
         $id=$app->escape($req->get('id'));
         if (is_numeric($id)) {
+            $user_id=$app['session']->get('user_id');
             $this->produitModel = new ProduitModel($app);
             $this->panierModel = new PanierModel($app);
-            $this->panierModel->deletePanier($id);
+            $this->panierModel->deletePanier($id,$user_id);
             $this->produitModel->deleteProduit($id);
             return $app->redirect($app["url_generator"]->generate("produit.index"));
         }

@@ -70,6 +70,15 @@ class CommandeController implements ControllerProviderInterface
         return $app->redirect($app["url_generator"]->generate("commande.show"));
     }
 
+    public function detailCommande(Application $app,$id)
+    {
+        if (is_numeric($id)) {
+            $this->commandeModel = new CommandeModel($app);
+            $commande = $this->commandeModel->getDetailCommande($id);
+        }
+        return $app["twig"]->render('backOff/Produit/showCommandeDetail.html.twig', ['data' => $commande]);
+    }
+
     /**
      * Returns routes to connect to the given application.
      *
@@ -86,6 +95,8 @@ class CommandeController implements ControllerProviderInterface
         $controllers->get('/removeCommande/{id}', 'App\Controller\commandeController::removeCommande')->bind('commande.remove')->assert('id', '\d+');
         $controllers->get('/expCommande/{id}', 'App\Controller\commandeController::expCommande')->bind('commande.exp')->assert('id', '\d+');
         $controllers->get('/prepCommande/{id}', 'App\Controller\commandeController::prepCommande')->bind('commande.prep')->assert('id', '\d+');
+        $controllers->get('/details/{id}', 'App\Controller\CommandeController::detailCommande')->bind('commande.detail')->assert('id', '\d+');
+
         return $controllers;
         // TODO: Implement connect() method.
     }

@@ -8,7 +8,7 @@
             <tr>{% if   app.session.get('roles') is defined and app.session.get('roles') == 'ROLE_ADMIN' %}
                 <th>user_id</th>
                 {% endif %}
-                <th>prix</th><th>date_achat</th><th>etat</th><th>opérations</th>
+                <th>prix</th><th>date_achat</th><th>etat</th><th>opérations</th><th>Detail</th>
             </tr>
             </thead>
             <tbody>
@@ -24,11 +24,10 @@
                             <a href="{{ path('commande.prep', {id: commandes.id}) }}">Preparation</a>
                              <a href="{{ path('commande.exp', {id: commandes.id}) }}">Expedition</a>
                         </td>
-                        {% else %}
-                        <td>
-                            <a href="{{ path('commande.remove', {id: commandes.id}) }}">annuler ma commande</a>
-                        </td>
                         {% endif %}
+                    <td>
+                        <a href="{{ path('commande.detail', {id: commandes.id}) }}">Détail de la commande</a>
+                    </td>
                 </tr>
             {% endfor %}
             <tbody>

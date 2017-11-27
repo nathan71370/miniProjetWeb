@@ -19,20 +19,41 @@ class PanierController implements ControllerProviderInterface
         $produits = $this->produitModel->getAllProduits();
         $this->panierModel = new PanierModel($app);
         //$app['session']->get('id')
-        $panier = $this->panierModel->getPanier2(1);
+        if($app['session']->get('user_id')!=null){
+
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=1;
+        }
+        $panier = $this->panierModel->getPanier2($user_id);
         return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
     }
     public function insertPanier(Application $app, Request $req){
         $id = $_GET['produit_id'];
         $quantite = $_GET['quantite'];
+        if($app['session']->get('user_id')!=null){
+
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=1;
+        }
         $this->panierModel = new PanierModel($app);
-        $this->panierModel->insertPanier($id, $quantite, 1);
+        $this->panierModel->insertPanier($id, $quantite, $user_id);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
     public function deletePanier (Application $app,$id) {
         if (is_numeric($id)) {
+            if($app['session']->get('user_id')!=null){
+
+                $user_id=$app['session']->get('user_id');
+            }
+            else{
+                $user_id=1;
+            }
             $this->panierModel = new PanierModel($app);
-            $this->panierModel->deletePanier($id);
+            $this->panierModel->deletePanier($id,$user_id);
         }
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }

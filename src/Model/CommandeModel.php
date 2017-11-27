@@ -16,7 +16,7 @@ class CommandeModel
     public function __construct(Application $app) {
         $this->db = $app['db'];
     }
-    public function insertCommande($user_id) {
+    public function insertCommande($user_id,$prix) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('commandes')
             ->values([
@@ -30,6 +30,18 @@ class CommandeModel
             ->setParameter(2, date("Y-m-d H:i:s")   )
             ->setParameter(3, 1);
         return $queryBuilder->execute();
+    }
+
+    public function getDetailCommande($id){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('pa.quantite', 'pa.prix', 'pa.dateAjoutPanier', 'tp.libelle as tlibelle','p.nom','p.prix','p.photo', 'pa.commande_id' ,'pa.produit_id' )
+            ->from('paniers','pa')
+            ->innerJoin('pa', 'produits', 'p', 'p.id=pa.produit_id')
+            ->innerJoin('p', 'typeProduits', 'tp', 'tp.id=p.id')
+            ->where('pa.commande_id= :id')
+            ->setParameter('id', $id);
+        return $queryBuilder->execute()->fetchAll();
     }
     function getCommande() {
         $queryBuilder = new QueryBuilder($this->db);

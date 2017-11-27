@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <div class="row">
+        <table>
+            <caption>Details de la commande (avec twig)</caption>
+            <thead>
+            <tr><th>nom</th><th>quantité</th><th>prix</th><th>dateAjoutPanier</th><th>produit_id</th><th>type produit</th><th>photo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in data if data is not empty %}
+                <tr>
+                    <td>{{produit.nom}}</td>
+                    <td>{{produit.quantite }}</td>
+                    <td>{{produit.quantite * produit.prix}}</td>
+                    <td>{{produit.dateAjoutPanier}}</td>
+                    <td>{{produit.produit_id}}</td>
+                    <td>{{produit.tlibelle}}</td>
+                    <td>
+                        <img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.nom}}" >
+                    </td>
+                </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+        <a href="{{ path('commande.show2') }}">Retour</a>
+    </div>
+
+{% endblock %}
