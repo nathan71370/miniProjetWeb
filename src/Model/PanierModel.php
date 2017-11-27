@@ -116,11 +116,11 @@ class PanierModel {
         return $queryBuilder->execute();
     }
 
-    public function getPrixTotal($user){
-        $queryBuilder= $this->db;
-        $requestSQL = $queryBuilder->prepare('SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL');
-        $requestSQL->execute(['idUser'=>$user]);
-        $prix = $requestSQL->fetch()['prix'];
-        return $prix;
+    public function getPrixTotal(){
+        $queryBuilder= new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('SUM(prix*quantite) as prixTotal')
+            ->from ('paniers');
+        return (int)$queryBuilder->execute()->fetch();
     }
 }
