@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller;
+use App\Model\PanierModel;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Silex\ControllerCollection;
@@ -20,6 +21,8 @@ use Symfony\Component\Security;
 class CommandeController implements ControllerProviderInterface
 {
     private $commandeModel;
+    private $paniersModel;
+
     public function index(Application $app) {
         return $this->showCommandes($app);
     }
@@ -42,15 +45,15 @@ class CommandeController implements ControllerProviderInterface
         else{
             $user_id=1;
         }
-        $prix=150;
         $this->commandeModel = new CommandeModel($app);
-        $this->commandeModel->insertCommande($user_id, $prix);
+        $this->commandeModel->addCommandeWithTransaction($user_id);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
-    public function removeCommande (Application $app) {
+
+    public function removeCommande (Application $app,$id) {
         $this->commandeModel = new CommandeModel($app);
-        $this->commandeModel->deleteCommande($_POST['id']);
-        return $app->redirect($app["url_generator"]->generate("commande.show"));
+        $this->commandeModel->deleteCommande($id);
+        return $app->redirect($app["url_generator"]->generate("commande.show2"));
     }
 
     /**
@@ -63,7 +66,11 @@ class CommandeController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controllers = $app['controllers_factory'];
-        $controllers->get('/showcommandeclient', 'App\Controller\produitController::index')->bind('produit.index');
+        $controllers->get('/', 'App\Controller\commandeController::index')->bind('commande.index');
+        $controllers->get('/showCommandes', 'App\Controller\commandeController::showCommandes')->bind('commande.show');
+        $controllers->get('/showCommandesClient', 'App\Controller\commandeController::showCommandes2')->bind('commande.show2');
+        $controllers->get('/removeCommande/{id}', 'App\Controller\commandeController::removeCommande')->bind('commande.remove')->assert('id', '\d+');
+        $controllers->get('/editCommande', 'App\Controller\commandeController::editCommande')->bind('commande.edit');
         return $controllers;
         // TODO: Implement connect() method.
     }

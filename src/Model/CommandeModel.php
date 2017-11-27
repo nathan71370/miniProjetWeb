@@ -55,4 +55,23 @@ class CommandeModel
             ->setParameter('idc',(int)$id);
         return $queryBuilder->execute();
     }
+
+    //AVEC TRANSACTION
+    public function addCommandeWithTransaction($user){
+        $date_achat=date("Y-m-d H:i:s");
+        try{
+            $this->db->beginTransaction();
+            $requestSQL = $this->db->prepare('SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL');
+            $prix = $requestSQL->fetch()['prix'];
+            $this->db->query("INSERT INTO commandes (user_id, prix, date_achat, etat_id) VALUES ('".$user."','".$prix."', '".$date_achat."', 1);");
+            $this->db->commit();
+        }
+        catch (Exception $e){
+            $this->db->rollback();
+            echo 'Tout ne s\'est pas bien passé, voir les erreurs ci-dessous<br />';
+            echo 'Erreur : '.$e->getMessage().'<br />';
+            echo 'N° : '.$e->getCode();
+            exit();
+        }
+    }
 }

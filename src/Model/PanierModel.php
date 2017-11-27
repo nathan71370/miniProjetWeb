@@ -100,12 +100,13 @@ class PanierModel {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->update('paniers')
-            ->set('quantite', '?')
+            ->set('quantite', 'quantite-1')
             ->where('id= ?')
             ->setParameter(0, $donnees['quantite'])
             ->setParameter(1, $donnees['id']);
         return $queryBuilder->execute();
     }
+
     public function deletePanier($id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
@@ -113,5 +114,13 @@ class PanierModel {
             ->where('produit_id = :id')
             ->setParameter('id',(int)$id);
         return $queryBuilder->execute();
+    }
+
+    public function getPrixTotal($user){
+        $queryBuilder= $this->db;
+        $requestSQL = $queryBuilder->prepare('SELECT SUM(prix*quantite) as prix from paniers where user_id = :idUser and commande_id is NULL');
+        $requestSQL->execute(['idUser'=>$user]);
+        $prix = $requestSQL->fetch()['prix'];
+        return $prix;
     }
 }

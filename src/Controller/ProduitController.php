@@ -148,10 +148,6 @@ class ProduitController implements ControllerProviderInterface
         $controllers->put('/edit', 'App\Controller\produitController::validFormEditProduit')->bind('produit.validFormEditProduit');
         $controllers->get('/insert', 'App\Controller\panierController::insertPanier')->bind('panier.insert');
         $controllers->get('/payer', 'App\Controller\commandeController::insertCommande')->bind('commande.insert');
-        $controllers->get('/showCommandes', 'App\Controller\commandeController::showCommandes')->bind('commande.show');
-        $controllers->get('/showCommandesClient', 'App\Controller\commandeController::showCommandes2')->bind('commande.show2');
-        $controllers->get('/removeCommande', 'App\Controller\commandeController::removeCommande')->bind('commande.remove');
-        $controllers->get('/editCommande', 'App\Controller\commandeController::editCommande')->bind('commande.edit');
         return $controllers;
     }
 }
