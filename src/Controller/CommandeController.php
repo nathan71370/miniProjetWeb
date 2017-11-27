@@ -46,7 +46,9 @@ class CommandeController implements ControllerProviderInterface
             $user_id=1;
         }
         $this->commandeModel = new CommandeModel($app);
-        $this->commandeModel->addCommandeWithTransaction($user_id);
+        $this->paniersModel = new PanierModel($app);
+        $prix=$this->paniersModel->getPrixTotal();
+        $this->commandeModel->addCommandeWithTransaction($user_id,$prix);
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 

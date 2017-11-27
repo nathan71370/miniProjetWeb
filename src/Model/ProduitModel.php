@@ -75,13 +75,13 @@ class ProduitModel {
         return $queryBuilder->execute();
     }
 
-    public function deleteProduit($id) {
+    public function deleteProduit($id)
+    {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->delete('produits')
             ->where('id = :id')
-            ->setParameter('id',(int)$id)
-        ;
+            ->setParameter('id', (int)$id);
         return $queryBuilder->execute();
     }
 
