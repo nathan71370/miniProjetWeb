@@ -10,9 +10,12 @@ CREATE TABLE IF NOT EXISTS typeProduits (
 )  DEFAULT CHARSET=utf8;
 -- Contenu de la table typeproduits
 INSERT INTO typeProduits (id, libelle) VALUES
-(1, 'Sextoy femme'),
-(2, 'Sextoy homme'),
-(3, 'Sextoy mixte');
+(1, 'Fusil à pompe'),
+(2, 'Fusil d\'assault'),
+(3, 'Pistolet mitrailleur'),
+(4, 'Lance roquette'),
+(5, 'Revolver'),
+(6, 'Sniper');
 
 -- --------------------------------------------------------
 -- Structure de la table etats
@@ -43,12 +46,12 @@ CREATE TABLE IF NOT EXISTS produits (
 ) DEFAULT CHARSET=utf8 ;
 
 INSERT INTO produits (id,typeProduit_id,nom,prix,photo,dispo,stock) VALUES
-(1,2, 'Masturbateur','10','masturbateur.jpg',1,5),
-(2,1, 'Penis','5.5','cock.jpg',1,4),
-(3,2, 'Pompe','8.5','pump.jpg',1,10),
-(4,1, 'Oeuf vibrant','8','egg.jpg',1,5),
-(5,3, 'Menottes','55','menottes.jpg',1,4),
-(6,1, 'Vibromasseur','5','Vibro.jpg',1,10);
+(1,3, 'MP9','10','mp9.jpg',1,5),
+(2,2, 'AK-47','5.5','AK47.jpg',1,4),
+(3,1, 'Spas-12','8.5','spas12.jpg',1,10),
+(4,6, 'Barrett','8','barret.png',1,5),
+(5,4, 'RPG','55','rpg.jpg',1,4),
+(6,5, 'Python','5','python.jpg',1,10);
 
 
 -- --------------------------------------------------------
