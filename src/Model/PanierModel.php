@@ -35,8 +35,8 @@ class PanierModel {
             $queryBuilder->insert('paniers')
                 ->values([
                     'produit_id' => '?',
-                    'quantite' => '?',
                     'prix' => '?',
+                    'quantite' => '?',
                     'user_id' => '?',
                     'dateAjoutPanier' => '?'
                 ])
@@ -113,13 +113,5 @@ class PanierModel {
             ->setParameter('id',(int)$id)
             ->setParameter('userid', $user_id);
         return $queryBuilder->execute();
-    }
-
-    public function getPrixTotal(){
-        $queryBuilder= new QueryBuilder($this->db);
-        $queryBuilder
-            ->select('SUM(prix*quantite) as prixTotal')
-            ->from ('paniers');
-        return (int)$queryBuilder->execute()->fetch();
     }
 }

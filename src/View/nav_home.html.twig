@@ -17,6 +17,9 @@
             </li>
         </ul>
         <ul class="right">
+            {% if   app.session.get('logged') is defined and  app.session.get('logged') == 0 %}
+                <li><a href="{{ path('user.addUser')  }}">S'inscrire</a></li>
+            {%  endif %}
             {% if   app.session.get('logged') is defined and  app.session.get('logged') == 1 %}
                 <li class="name" style="color: #d58512">Connecté en tant que : {{ app.session.get('username') }}</li>
                 <li><a href="{{ path('user.logout')  }}">Se déconnecter</a></li>

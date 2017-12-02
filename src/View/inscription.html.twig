@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <form method="post" action="{{ path('user.addUser') }}">
+        <div class="row">
+            <fieldset>
+                <legend>Inscription</legend>
+                <label>Nom de compte :
+                    <input name="username"  type="text"  size="18" value="{{donnees.username|default('')}}" />
+                    {% if erreurs.nom is defined %}
+                        <small class="error">{{erreurs.nom}}</small>
+                    {% endif %}
+                </label>
+                <label>Mot de passe :
+                    <input name="motdepasse"  type="text"  size="18" value="{{donnees.motdepasse|default('')}}" />
+                    {% if erreurs.motdepasse is defined %}
+                        <small class="error">{{erreurs.motdepasse}}</small>
+                    {% endif %}
+                </label>
+                </label>
+                <label>Email :
+                    <input name="email"  type="text"  size="18" 	value="{{donnees.email|default('')}}"/>
+                    {% if erreurs.email is defined %}
+                        <small class="error">{{erreurs.email}}</small>
+                    {% endif %}
+                </label>
+                <input type="submit" name="addUser" value="S'inscrire" />
+            </fieldset>
+        </div>
+    </form>
+{% endblock %}
