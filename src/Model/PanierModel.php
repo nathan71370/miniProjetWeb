@@ -9,7 +9,7 @@ class PanierModel {
     }
     // http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html#join-clauses
     public function insertPanier($id, $quantite, $user_id) {
-        $requete="SELECT quantite FROM paniers WHERE produit_id=$id and commande_id is null";
+        $requete="SELECT quantite FROM paniers WHERE produit_id=$id and commande_id is null and user_id=$user_id";
         $select = $this->db->query($requete);
         $res = $select->fetch();
         if($res != null){

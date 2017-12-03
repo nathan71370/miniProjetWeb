@@ -39,10 +39,12 @@ class CommandeModel
             ->from('paniers','pa')
             ->innerJoin('pa', 'produits', 'p', 'p.id=pa.produit_id')
             ->innerJoin('p', 'typeProduits', 'tp', 'tp.id=p.id')
-            ->where('pa.commande_id= :id')
-            ->setParameter('id', $id);
+            ->where('pa.commande_id= :idcom')
+            ->setParameter('idcom', $id);
         return $queryBuilder->execute()->fetchAll();
     }
+
+
     function getCommande() {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder

@@ -1,24 +1,23 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
-    <form method="post" action="{{ path('user.addUser') }}">
+    <form method="post" action="{{ path('user.validFormAddUser') }}">
         <div class="row">
             <fieldset>
                 <legend>Inscription</legend>
                 <label>Nom de compte :
-                    <input name="username"  type="text"  size="18" value="{{donnees.username|default('')}}" />
-                    {% if erreurs.nom is defined %}
-                        <small class="error">{{erreurs.nom}}</small>
+                    <input name="login"  type="text"  size="18" value="{{donnees.login|default('')}}" />
+                    {% if erreurs.login is defined %}
+                        <small class="error">{{erreurs.login}}</small>
                     {% endif %}
                 </label>
                 <label>Mot de passe :
-                    <input name="motdepasse"  type="text"  size="18" value="{{donnees.motdepasse|default('')}}" />
-                    {% if erreurs.motdepasse is defined %}
-                        <small class="error">{{erreurs.motdepasse}}</small>
+                    <input name="password"  type="password"  size="18" value="{{donnees.password|default('')}}" />
+                    {% if erreurs.password is defined %}
+                        <small class="error">{{erreurs.password}}</small>
                     {% endif %}
                 </label>
-                </label>
                 <label>Email :
-                    <input name="email"  type="text"  size="18" 	value="{{donnees.email|default('')}}"/>
+                    <input name="email"  type="text"  size="18" value="{{donnees.email|default('')}}"/>
                     {% if erreurs.email is defined %}
                         <small class="error">{{erreurs.email}}</small>
                     {% endif %}
