@@ -23,7 +23,14 @@ class ProduitController implements ControllerProviderInterface
         $produits = $this->produitModel->getAllProduits();
         $this->panierModel = new PanierModel($app);
         //$app['session']->get('id')
-        $panier = $this->panierModel->getPanier2(1);
+        if($app['session']->get('user_id')!=null){
+
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=1;
+        }
+        $panier = $this->panierModel->getPanier2($user_id);
         return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
     }
     public function addProduit(Application $app) {
