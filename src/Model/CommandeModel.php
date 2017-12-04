@@ -32,6 +32,7 @@ class CommandeModel
         return $queryBuilder->execute();
     }
 
+
     public function getDetailCommande($id){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
@@ -39,8 +40,9 @@ class CommandeModel
             ->from('paniers','pa')
             ->innerJoin('pa', 'produits', 'p', 'p.id=pa.produit_id')
             ->innerJoin('p', 'typeProduits', 'tp', 'tp.id=p.id')
-            ->where('pa.commande_id= :idcom')
-            ->setParameter('idcom', $id);
+            ->where('pa.commande_id is NULL')
+            ->andWhere('pa.user_id=:idc')
+            ->setParameter('idc', $id);
         return $queryBuilder->execute()->fetchAll();
     }
 
@@ -97,7 +99,7 @@ class CommandeModel
         $date_achat=date("Y-m-d H:i:s");
         try{
             $this->db->beginTransaction();
-            $prix=150;
+            $prix=random_int(10,500);
             $this->db->query("INSERT INTO commandes (user_id, prix, date_achat, etat_id) VALUES ('".$user."','".$prix."', '".$date_achat."', 1);");
             $this->db->commit();
         }

@@ -1,9 +1,24 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
+<script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
+<script type='text/javascript'>
+    var captchaContainer = null;
+    var loadCaptcha = function() {
+        captchaContainer = grecaptcha.render('captcha_container', {
+            'sitekey' : '6LcDZDsUAAAAAF8gaghw5mMpUF_AtUyzz9PGhObb',
+            'callback' : function(response) {
+                console.log(response);
+            }
+        });
+    };
+    </script>
     <form method="post" action="{{ path('user.validFormAddUser') }}">
         <div class="row">
             <fieldset>
                 <legend>Inscription</legend>
+                {% if erreurs.inscri is defined %}
+                    <small class="error">{{erreurs.inscri}}</small>
+                {% endif %}
                 <label>Nom de compte :
                     <input name="login"  type="text"  size="18" value="{{donnees.login|default('')}}" />
                     {% if erreurs.login is defined %}
@@ -22,6 +37,10 @@
                         <small class="error">{{erreurs.email}}</small>
                     {% endif %}
                 </label>
+
+                <center>
+                    <div id="captcha_container"></div>
+                </center>
                 <input type="submit" name="addUser" value="S'inscrire" />
             </fieldset>
         </div>

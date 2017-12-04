@@ -43,7 +43,7 @@ class CommandeController implements ControllerProviderInterface
             $user_id=$app['session']->get('user_id');
         }
         else{
-            $user_id=1;
+            $user_id=0;
         }
         $this->commandeModel = new CommandeModel($app);
         $this->paniersModel = new PanierModel($app);
@@ -73,7 +73,7 @@ class CommandeController implements ControllerProviderInterface
     {
         if (is_numeric($id)) {
             $this->commandeModel = new CommandeModel($app);
-            $commande = $this->commandeModel->getDetailCommande($id);
+            $commande = $this->commandeModel->getDetailCommande($app['session']->get('user_id'));
         }
         return $app["twig"]->render('backOff/Produit/showCommandeDetail.html.twig', ['data' => $commande]);
     }

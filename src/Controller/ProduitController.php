@@ -28,7 +28,7 @@ class ProduitController implements ControllerProviderInterface
             $user_id=$app['session']->get('user_id');
         }
         else{
-            $user_id=1;
+            $user_id=0;
         }
         $panier = $this->panierModel->getPanier2($user_id);
         return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);

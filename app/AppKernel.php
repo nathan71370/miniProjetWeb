@@ -58,5 +58,7 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 // Montage des controleurs sur le routeur
 include('routing.php');
 
+
+
 //On lance l'application
 $app->run();
