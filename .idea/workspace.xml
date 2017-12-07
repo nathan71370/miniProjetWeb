@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="925d37c0-b7ee-496e-be08-f506609be080" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/showCommandeDetail.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/showCommandes.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/View/coordonnee.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/View/inscription.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CommandeController.php" afterPath="$PROJECT_DIR$/src/Controller/CommandeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/PanierController.php" afterPath="$PROJECT_DIR$/src/Controller/PanierController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/CommandeModel.php" afterPath="$PROJECT_DIR$/src/Model/CommandeModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" afterPath="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/frontOff/Produit/showProduits.html.twig" afterPath="$PROJECT_DIR$/src/View/frontOff/Produit/showProduits.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/nav_backOff.html.twig" afterPath="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,16 +46,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
               <caret line="33" column="76" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav_backOff.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -149,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandeModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandeModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/CommandeModel.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="457">
@@ -160,6 +138,16 @@
                 <marker date="1512661418131" expanded="true" signature="3666:3726" ph="INSERT INTO commandes... " />
                 <marker date="1512661418131" expanded="true" signature="3864:3936" ph="update panie... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="526">
+              <caret line="34" column="85" lean-forward="false" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -213,6 +201,7 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/View/backOff/Commande/showCommandeDetail.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/CommandeModel.php" />
+        <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
       </list>
     </option>
   </component>
@@ -394,7 +383,7 @@
       <workItem from="1512251734458" duration="426000" />
       <workItem from="1512380584280" duration="4654000" />
       <workItem from="1512391429055" duration="5848000" />
-      <workItem from="1512653879518" duration="6500000" />
+      <workItem from="1512653879518" duration="6764000" />
     </task>
     <task id="LOCAL-00001" summary="mieu">
       <created>1510568639499</created>
@@ -529,11 +518,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512658168437</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="mieux mtn">
+      <created>1512661443647</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1512661443647</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88761000" />
+    <option name="totallyTimeSpent" value="89025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -858,14 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeDetail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -988,6 +976,14 @@
             <marker date="1512661418131" expanded="true" signature="3666:3726" ph="INSERT INTO commandes... " />
             <marker date="1512661418131" expanded="true" signature="3864:3936" ph="update panie... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="34" column="85" lean-forward="false" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>
