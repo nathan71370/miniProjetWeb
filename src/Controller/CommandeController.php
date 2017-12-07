@@ -73,7 +73,7 @@ class CommandeController implements ControllerProviderInterface
     {
         if (is_numeric($id)) {
             $this->commandeModel = new CommandeModel($app);
-            $commande = $this->commandeModel->getDetailCommande($app['session']->get('user_id'));
+            $commande = $this->commandeModel->getDetailCommande($id);
         }
         return $app["twig"]->render('backOff/Produit/showCommandeDetail.html.twig', ['data' => $commande]);
     }

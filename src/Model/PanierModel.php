@@ -9,40 +9,42 @@ class PanierModel {
     }
     // http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html#join-clauses
     public function insertPanier($id, $quantite, $user_id) {
-        $requete="SELECT quantite FROM paniers WHERE produit_id=$id and commande_id is null and user_id=$user_id";
+        $requete="UPDATE produits SET stock=stock-$quantite WHERE id=$id";
+        $select = $this->db->query($requete);
+        $select->execute();
+        $requete="SELECT quantite FROM paniers WHERE produit_id=$id and commande_id is null";
         $select = $this->db->query($requete);
         $res = $select->fetch();
         if($res != null){
+            $requete="SELECT prix FROM produits WHERE id=$id;";
+            $select = $this->db->query($requete);
+            $nb = $select->fetch()['prix'];
+            $prix = ($quantite+intval($res['quantite'],10))*$nb;
             $queryBuilder = new QueryBuilder($this->db);
             $queryBuilder
                 ->update('paniers')
                 ->set('quantite', ($quantite+intval($res['quantite'],10)))
+                ->set('prix', $prix)
                 ->where('produit_id= :id')
                 ->andWhere('commande_id IS NULL')
-                ->andWhere('user_id= :userid')
-                ->setParameter('userid', $user_id)
                 ->setParameter('id', $id);
         }else{
-            $queryBuilder = new QueryBuilder($this->db);
-            $queryBuilder
-                ->select('prix')
-                ->from('produits', 'p')
-                ->where('p.id= :id')
-                ->setParameter('id', $id);
-            $queryBuilder->execute()->fetch();
-            $nb = $queryBuilder;
+            $requete="SELECT prix FROM produits WHERE id=$id;";
+            $select = $this->db->query($requete);
+            $nb = $select->fetch()['prix'];
+            $nb = intval($nb)*$quantite;
             $queryBuilder = new QueryBuilder($this->db);
             $queryBuilder->insert('paniers')
                 ->values([
                     'produit_id' => '?',
-                    'prix' => '?',
                     'quantite' => '?',
+                    'prix' => '?',
                     'user_id' => '?',
                     'dateAjoutPanier' => '?'
                 ])
                 ->setParameter(0, $id)
                 ->setParameter(1, $quantite)
-                ->setParameter(2, $nb*$quantite)
+                ->setParameter(2, $nb)
                 ->setParameter(3, $user_id)
                 ->setParameter(4, date("Y-m-d H:i:s")   );
         }
@@ -54,7 +56,7 @@ class PanierModel {
             ->select('id', 'quantite', 'prix', 'dateAjoutPanier')
             ->from('paniers')
             ->where('user_id= :userid')
-            ->andWhere('commande_id = NULL')
+            ->andWhere('commande_id is NULL')
             ->setParameter('userid', $user_id);
         return $queryBuilder->execute()->fetchAll();
     }

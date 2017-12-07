@@ -40,8 +40,7 @@ class CommandeModel
             ->from('paniers','pa')
             ->innerJoin('pa', 'produits', 'p', 'p.id=pa.produit_id')
             ->innerJoin('p', 'typeProduits', 'tp', 'tp.id=p.id')
-            ->where('pa.commande_id is NULL')
-            ->andWhere('pa.user_id=:idc')
+            ->where('pa.commande_id=:idc')
             ->setParameter('idc', $id);
         return $queryBuilder->execute()->fetchAll();
     }
@@ -95,20 +94,20 @@ class CommandeModel
     }
 
     //AVEC TRANSACTION
-    public function addCommandeWithTransaction($user){
-        $date_achat=date("Y-m-d H:i:s");
-        try{
-            $this->db->beginTransaction();
-            $prix=random_int(10,500);
-            $this->db->query("INSERT INTO commandes (user_id, prix, date_achat, etat_id) VALUES ('".$user."','".$prix."', '".$date_achat."', 1);");
-            $this->db->commit();
-        }
-        catch (Exception $e){
-            $this->db->rollback();
-            echo 'Tout ne s\'est pas bien passé, voir les erreurs ci-dessous<br />';
-            echo 'Erreur : '.$e->getMessage().'<br />';
-            echo 'N° : '.$e->getCode();
-            exit();
-        }
+    public function addCommandeWithTransaction($user)
+    {
+        $conn = $this->db;
+        $conn->beginTransaction();
+        $requestSQL = $conn->prepare('SELECT SUM(prix) as prix_total from paniers where user_id = :idUser and commande_id is NULL');
+        $requestSQL->execute(['idUser' => $user]);
+        $prix = $requestSQL->fetch()['prix_total'];
+        $conn->commit();
+        $conn->beginTransaction();
+        $requestSQL = $conn->prepare('INSERT INTO commandes(user_id, prix, etat_id) VALUES (?,?,?)');
+        $requestSQL->execute([$user, $prix, 1]);
+        $lastinsertid = $conn->lastInsertId();
+        $requestSQL = $conn->prepare('update paniers set commande_id=? where user_id=? and commande_id is null');
+        $requestSQL->execute([$lastinsertid, $user]);
+        $conn->commit();
     }
 }

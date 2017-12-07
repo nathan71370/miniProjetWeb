@@ -29,6 +29,21 @@ class PanierController implements ControllerProviderInterface
         $panier = $this->panierModel->getPanier2($user_id);
         return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
     }
+
+    public function showPaniersClient(Application $app) {
+        $this->panierModel = new PanierModel($app);
+        //$app['session']->get('id')
+        if($app['session']->get('user_id')!=null){
+
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=0;
+        }
+        $paniers = $this->panierModel->getPanier2($user_id);
+        return $app["twig"]->render('frontOff/Panier/showPanier.html.twig',['data'=>$paniers]);
+    }
+
     public function insertPanier(Application $app, Request $req){
         $id = $_GET['produit_id'];
         $quantite = $_GET['quantite'];
@@ -60,6 +75,7 @@ class PanierController implements ControllerProviderInterface
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
         $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');
+        $controllers->get('/showClient', 'App\Controller\panierController::showPaniersClient')->bind('paniers.showPaniers');
         $controllers->get('/remove/{id}', 'App\Controller\panierController::deletePanier')->bind('panier.remove')->assert('id', '\d+');
         return $controllers;
     }
