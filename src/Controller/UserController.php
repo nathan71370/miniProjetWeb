@@ -28,11 +28,11 @@ class UserController implements ControllerProviderInterface {
         $donnees = $this->userModel->getUser($app['session']->get('user_id'));
         $donnees['login'] = $donnees['username'];
         $donnees['cp'] = $donnees['code_postal'];
-        return $app["twig"]->render('coordonnee.html.twig',['donnees'=>$donnees]);
+        return $app["twig"]->render('frontOff/User/coordonnee.html.twig',['donnees'=>$donnees]);
     }
 
 	public function showCoordonnee(Application $app){
-        return $app["twig"]->render('coordonnee.html.twig');
+        return $app["twig"]->render('frontOff/User/coordonnee.html.twig');
     }
 
 	public function validFormConnexionUser(Application $app, Request $req)
@@ -87,7 +87,7 @@ class UserController implements ControllerProviderInterface {
         if (! preg_match("/[A-Za-z1-9]{2,}/",$donnees['adresse'])) $erreurs['adresse']='Veuillez saisir une adresse valide';
         if(!empty($erreurs))
         {
-            return $app["twig"]->render('coordonnee.html.twig',['donnees'=>$donnees,'erreurs'=>$erreurs]);
+            return $app["twig"]->render('frontOff/User/coordonnee.html.twig',['donnees'=>$donnees,'erreurs'=>$erreurs]);
         }
         else
         {
@@ -110,7 +110,7 @@ class UserController implements ControllerProviderInterface {
             if (!filter_var($donnees['email'], FILTER_VALIDATE_EMAIL)) $erreurs['email'] = "Format email invalide";
             if(!$this->userModel->verif_login_email_Utilisateur($donnees['login'], $donnees['email'])) $erreurs['inscri']="Pseudo ou email deja utilisé";
             if (!empty($erreurs)) {
-                return $app["twig"]->render('inscription.html.twig', ['donnees' => $donnees, 'erreurs' => $erreurs, ]);
+                return $app["twig"]->render('frontOff/User/inscription.html.twig', ['donnees' => $donnees, 'erreurs' => $erreurs, ]);
             } else {
                 $this->userModel = new UserModel($app);
                 $this->userModel->addUser($donnees['login'],$donnees['password'], $donnees['email']);
@@ -122,7 +122,7 @@ class UserController implements ControllerProviderInterface {
         }
     }
 	public function addUser(Application $app){
-        return $app["twig"]->render('inscription.html.twig');
+        return $app["twig"]->render('frontOff/User/inscription.html.twig');
     }
 
 	public function connect(Application $app) {

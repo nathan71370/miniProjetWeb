@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <div class="row">
+        <table>
+            <caption>Recapitulatifs des produits (avec twig)</caption>
+            <thead>
+            <tr><th>Numéro de commande</th><th>Prix de la commande</th><th>Date d'achat</th><th>Etat de la commande</th><th>Opération</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for commande in data if data is not empty %}
+                <tr>
+                    <td>{{commande.id}}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
+                        {{commande.libelle}}</td> <td>
+                        <a href="{{ path('commande.detail', {id: commande.id}) }}">Détails</a></td>
+                    {#<td>#}
+                        {#<a href="{{ path('panier.remove', {id: panier.id}) }}">supprimer du panier</a>#}
+                        {#<img style="width:40px;height:40px" src="{{asset('images/')}}{{panier.photo}}" alt="image de {{panier.libelle}}" >#}
+                    {#</td>#}
+                </tr>
+            {% endfor %}
+            {% if data is empty %}
+                 <tr>
+                     <td colspan="7" style="text-align: center">Pas de commande à afficher</td>
+                 </tr>
+            {% endif %}
+            <tbody>
+        </table>
+    </div>
+{% endblock %}

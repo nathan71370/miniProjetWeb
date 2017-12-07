@@ -18,7 +18,23 @@ class ProduitController implements ControllerProviderInterface
     public function index(Application $app) {
         return $this->showProduits($app);
     }
-    public function showProduits(Application $app) {
+    public function showProduits(Application $app) {//client
+        $this->produitModel = new ProduitModel($app);
+        $produits = $this->produitModel->getAllProduits();
+        $this->panierModel = new PanierModel($app);
+        //$app['session']->get('id')
+        if($app['session']->get('user_id')!=null){
+
+            $user_id=$app['session']->get('user_id');
+        }
+        else{
+            $user_id=0;
+        }
+        $panier = $this->panierModel->getPanier2($user_id);
+        return $app["twig"]->render('frontOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
+    }
+
+    public function showAllProduits(Application $app) {//Admin
         $this->produitModel = new ProduitModel($app);
         $produits = $this->produitModel->getAllProduits();
         $this->panierModel = new PanierModel($app);
@@ -33,6 +49,7 @@ class ProduitController implements ControllerProviderInterface
         $panier = $this->panierModel->getPanier2($user_id);
         return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits, 'data2'=>$panier]);
     }
+
     public function addProduit(Application $app) {
         $this->typeProduitModel = new TypeProduitModel($app);
         $typeProduits = $this->typeProduitModel->getAllTypeProduits();
@@ -147,6 +164,7 @@ class ProduitController implements ControllerProviderInterface
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
         $controllers->get('/', 'App\Controller\produitController::index')->bind('produit.index');
+        $controllers->get('/showAll', 'App\Controller\produitController::showAllProduits')->bind('produit.showAllProduits');
         $controllers->get('/show', 'App\Controller\produitController::showProduits')->bind('produit.showProduits');
         $controllers->get('/add', 'App\Controller\produitController::addProduit')->bind('produit.addProduit');
         $controllers->post('/add', 'App\Controller\produitController::validFormAddProduit')->bind('produit.validFormAddProduit');

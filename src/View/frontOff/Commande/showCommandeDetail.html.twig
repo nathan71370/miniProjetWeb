@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <div class="row">
+        <table>
+            <caption>Details de la commande (avec twig)</caption>
+            <thead>
+            <tr><th>nom</th><th>quantité</th><th>prix</th><th>dateAjoutPanier</th><th>produit_id</th><th>type produit</th><th>photo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in data if data is not empty %}
+                <tr>
+                    <td>{{produit.nom}}</td>
+                    <td>{{produit.quantite }}</td>
+                    <td>{{produit.quantite * produit.prix}}</td>
+                    <td>{{produit.dateAjoutPanier}}</td>
+                    <td>{{produit.produit_id}}</td>
+                    <td>{{produit.tlibelle}}</td>
+                    <td>
+                        <img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.nom}}" >
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if data is empty %}
+                <tr>
+                    <td colspan="7" style="text-align: center">Pas de commande à afficher</td>
+                </tr>
+            {% endif %}
+            <tbody>
+        </table>
+
+        {% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
+            <a href="{{ path('commande.showAll') }}">Retour</a>
+        {% else %}
+            <a href="{{ path('commande.show') }}">Retour</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

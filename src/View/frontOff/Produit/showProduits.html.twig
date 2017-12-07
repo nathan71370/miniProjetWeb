@@ -1,26 +1,94 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
-    <div class="row">
-        <table>
-            <caption>Recapitulatifs des produits (avec twig)</caption>
-            <thead>
-            <tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>ajouter</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for produit in data if data is not empty %}
-                <tr>
-                    <td>{{produit.nom}}</td><td>{{produit.id}}</td><td>{{produit.libelle}}</td><td>{{produit.prix}}</td><td>
-                        {{produit.photo}}</td><td>
-                        <img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" >
-                    </td>
-                    <td>
-                        <a href="{{ path('basket.addProduit', {id: produit.id}) }}">ajouter au panier</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            <tbody>
-        </table>
-    </div>
+	<div style="margin-top: 20px;">
+		{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
+			<a href="{{ path('produit.addProduit') }}"> Ajouter un produit </a>
+		{% endif %}
+
+		<div class="large-6 small-12 columns">
+			<table class="large-10 small-12 large-offset-1">
+				<caption>Recapitulatifs des produits (avec twig)</caption>
+				<thead>
+				<tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>Quantité</th><th>Ajouter</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for produit in data if data is not empty %}
+					<tr>
+						<td>{{produit.nom}}</td><td>{{produit.id}}</td><td>{{produit.libelle}}</td><td>{{produit.prix}}</td><td>
+							{{produit.photo}}</td><td>
+							<img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" >
+						</td>
+						{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
+							<td>
+								<a href="{{ path('produit.editProduit', {id: produit.id}) }}">modifier</a>
+								<a href="{{ path('produit.deleteProduit', {id: produit.id}) }}">supprimer</a>
+							</td>
+						{% endif %}
+                        {% if   app.session.get('roles') is not defined or  app.session.get('roles') != 'ROLE_ADMIN' %}
+							<td>
+								<form method="get" action="{{ path('panier.insert') }}">
+									<div class="row">
+										<input name="produit_id"  type="hidden"  size="18" value="{{produit.id}}" />
+										<label>Quantité :
+											<select name="quantite">
+                                                {% for i in 1..20 %}
+													<option value="{{ i }}">
+                                                        {{ i }}
+													</option>
+                                                {% endfor %}
+											</select>
+										</label>
+									</div>
+							</td>
+						<td>
+								<input type="submit" name="Ajouter" value="Ajouter" />
+						</form>
+						</td>
+                        {% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="large-6 small-12 columns">
+			<table class="large-10 small-12 large-offset-1">
+				<caption>Recapitulatifs du panier (avec twig)</caption>
+				<thead>
+				<tr><th>nom</th><th>quantité</th><th>prix</th><th>dateAjoutPanier</th><th>produit_id</th><th>photo</th><th>opération</th></tr>
+				</thead>
+				<tbody>
+				{% for produit in data2 if data2 is not empty %}
+					<tr>
+						<td>{{produit.nom}}</td><td>{{produit.quantite}}</td><td>{{produit.quantite * produit.prix}}</td><td>{{produit.dateAjoutPanier}}</td><td>
+							{{produit.produit_id}}</td><td>
+							<img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.nom}}" >
+						</td>
+						{% if   app.session.get('roles') is not defined or  app.session.get('roles') != 'ROLE_ADMIN' %}
+							<td>
+								<a href="{{ path('panier.remove', {id: produit.id}) }}">supprimer</a>
+							</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+                {% if data2 is empty %}
+					<tr>
+						<td colspan="7" style="text-align: center">Votre panier est vide</td>
+					</tr>
+                {% endif %}
+				</tbody>
+			</table>
+            {% if data2 is not empty %}
+			<table>
+				<tbody>
+				<tr>
+					<td>
+						<a href="{{ path('commande.insert') }}">Payer</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+            {% endif %}
+		</div>
+	</div>
 {% endblock %}
 

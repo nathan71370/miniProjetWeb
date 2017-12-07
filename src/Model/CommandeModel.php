@@ -51,7 +51,8 @@ class CommandeModel
         $queryBuilder
             ->select('c.id','c.user_id','c.prix','c.date_achat','c.etat_id','e.libelle')
             ->from('commandes', 'c')
-            ->innerJoin('c','etats', 'e','c.etat_id=e.id');
+            ->innerJoin('c','etats', 'e','c.etat_id=e.id')
+            ->orderBy("date_achat");
         return $queryBuilder->execute()->fetchAll();
     }
     function getCommande2($user_id) {
@@ -61,6 +62,7 @@ class CommandeModel
             ->from('commandes','c')
             ->innerJoin('c','etats', 'e','c.etat_id=e.id')
             ->where('user_id=:userid')
+            ->orderBy("date_achat")
         ->setParameter('userid', $user_id);
         return $queryBuilder->execute()->fetchAll();
     }

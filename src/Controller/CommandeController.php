@@ -24,18 +24,18 @@ class CommandeController implements ControllerProviderInterface
     private $paniersModel;
 
     public function index(Application $app) {
-        return $this->showCommandes($app);
+        return $this->showCommandes2($app);
     }
-    public function showCommandes(Application $app) {
+    public function showCommandes(Application $app) {//ADMIN
         $this->commandeModel = new CommandeModel($app);
         //$app['session']->get('id')
         $commande = $this->commandeModel->getCommande();
-        return $app["twig"]->render('backOff/Produit/showCommandes.html.twig',['data'=>$commande]);
+        return $app["twig"]->render('backOff/Commande/showCommandes.html.twig',['data'=>$commande]);
     }
-    public function showCommandes2(Application $app) {
+    public function showCommandes2(Application $app) {//CLIENT
         $this->commandeModel = new CommandeModel($app);
         $commande = $this->commandeModel->getCommande2($app['session']->get('user_id'));
-        return $app["twig"]->render('backOff/Produit/showCommandes.html.twig',['data'=>$commande]);
+        return $app["twig"]->render('frontOff/Commande/showCommandes.html.twig',['data'=>$commande]);
     }
 
     public function insertCommande(Application $app){
@@ -60,13 +60,13 @@ class CommandeController implements ControllerProviderInterface
     public function expCommande(Application $app, $id){
         $this->commandeModel = new CommandeModel($app);
         $this->commandeModel->expeditionCommande($id);
-        return $app->redirect($app["url_generator"]->generate("commande.show"));
+        return $app->redirect($app["url_generator"]->generate("commande.showAll"));
     }
 
     public function prepCommande(Application $app, $id){
         $this->commandeModel = new CommandeModel($app);
         $this->commandeModel->preparationCommande($id);
-        return $app->redirect($app["url_generator"]->generate("commande.show"));
+        return $app->redirect($app["url_generator"]->generate("commande.showAll"));
     }
 
     public function detailCommande(Application $app,$id)
@@ -75,7 +75,7 @@ class CommandeController implements ControllerProviderInterface
             $this->commandeModel = new CommandeModel($app);
             $commande = $this->commandeModel->getDetailCommande($id);
         }
-        return $app["twig"]->render('backOff/Produit/showCommandeDetail.html.twig', ['data' => $commande]);
+        return $app["twig"]->render('backOff/Commande/showCommandeDetail.html.twig', ['data' => $commande]);
     }
 
     /**
@@ -89,7 +89,7 @@ class CommandeController implements ControllerProviderInterface
     {
         $controllers = $app['controllers_factory'];
         $controllers->get('/', 'App\Controller\commandeController::index')->bind('commande.index');
-        $controllers->get('/showCommandes', 'App\Controller\commandeController::showCommandes')->bind('commande.show');
+        $controllers->get('/showCommandes', 'App\Controller\commandeController::showCommandes')->bind('commande.showAll');
         $controllers->get('/showCommandesClient', 'App\Controller\commandeController::showCommandes2')->bind('commande.show2');
         $controllers->get('/removeCommande/{id}', 'App\Controller\commandeController::removeCommande')->bind('commande.remove')->assert('id', '\d+');
         $controllers->get('/expCommande/{id}', 'App\Controller\commandeController::expCommande')->bind('commande.exp')->assert('id', '\d+');

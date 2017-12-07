@@ -12,7 +12,7 @@ class PanierController implements ControllerProviderInterface
     private $panierModel;
     private $produitModel;
     public function index(Application $app) {
-        return $this->showPaniers($app);
+        return $this->showPaniersClient($app);
     }
     public function showPaniers(Application $app) {
         $this->produitModel = new ProduitModel($app);
@@ -56,7 +56,7 @@ class PanierController implements ControllerProviderInterface
         }
         $this->panierModel = new PanierModel($app);
         $this->panierModel->insertPanier($id, $quantite, $user_id);
-        return $app->redirect($app["url_generator"]->generate("panier.index"));
+        return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
     }
     public function deletePanier (Application $app,$id) {
         if (is_numeric($id)) {
