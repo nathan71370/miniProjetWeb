@@ -70,7 +70,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     $nomRoute=$request->get("_route");
 
-    if ($app['session']->get('roles') != 'ROLE_ADMIN'  && ($nomRoute=="commande.showAll" || $nomRoute=="commande.exp" || $nomRoute=="commande.prep")) {
+    if ($app['session']->get('roles') != 'ROLE_ADMIN'  && ($nomRoute=="commande.showAll" || $nomRoute=="commande.exp" || $nomRoute=="commande.prep" || $nomRoute=="produit.addProduit" || $nomRoute=="produit.deleteProduit")) {
         return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
     }
     if ($app['session']->get('logged') != 1 && ($nomRoute!="produit.showProduits" && $nomRoute!="user.login" && $nomRoute!="user.addUser" && $nomRoute!="accueil" &&

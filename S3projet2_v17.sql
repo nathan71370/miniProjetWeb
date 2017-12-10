@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS produits (
 ) DEFAULT CHARSET=utf8 ;
 
 INSERT INTO produits (id,typeProduit_id,nom,prix,photo,dispo,stock) VALUES
-(1,3, 'MP9','10','mp9.jpg',1,5),
+(1,3, 'MP9','10','mp92.jpg',1,5),
 (2,2, 'AK-47','5.5','AK47.jpg',1,4),
-(3,1, 'Spas-12','8.5','spas12.jpg',1,10),
-(4,6, 'Barrett','8','barret.png',1,5),
-(5,4, 'RPG','55','rpg.jpg',1,4),
-(6,5, 'Python','5','python.jpg',1,10);
+(3,1, 'Spas-12','8.5','spas122.jpg',1,10),
+(4,6, 'Barrett','8','barret2.jpg',1,5),
+(5,4, 'RPG','55','rpg2.jpg',1,4),
+(6,5, 'Python','5','python2.jpg',1,10);
 
 
 -- --------------------------------------------------------

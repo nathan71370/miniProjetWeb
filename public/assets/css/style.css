@@ -10,7 +10,7 @@
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;	
+  -o-transition: all 0.4s ease-in-out;
 }
 .top-bar .name h1 a:hover {
   	color: #fff;
@@ -34,13 +34,13 @@ button, .button:hover {
     background-color: #d9534f;
 }
 button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #222; 
+    background-color: #222;
 }
 footer {
    width: 100%;
    bottom: 0px;
    left: 0px;
    background-color: #333;
-   
+
 }
 
