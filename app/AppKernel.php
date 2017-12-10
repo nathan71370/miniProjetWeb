@@ -73,6 +73,9 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
     if ($app['session']->get('roles') != 'ROLE_ADMIN'  && ($nomRoute=="commande.showAll" || $nomRoute=="commande.exp" || $nomRoute=="commande.prep" || $nomRoute=="produit.addProduit" || $nomRoute=="produit.deleteProduit")) {
         return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
     }
+    if ($app['session']->get('roles') == 'ROLE_ADMIN'  && ($nomRoute=="panier.index")) {
+        return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
+    }
     if ($app['session']->get('logged') != 1 && ($nomRoute!="produit.showProduits" && $nomRoute!="user.login" && $nomRoute!="user.addUser" && $nomRoute!="accueil" &&
             $nomRoute!="index.errorLogin" && $nomRoute!="index.errorDroit" && $nomRoute!="user.validFormAddUser" && $nomRoute!="user.validFormlogin")) {
         return $app->redirect($app["url_generator"]->generate("index.errorLogin"));
