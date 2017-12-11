@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="925d37c0-b7ee-496e-be08-f506609be080" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig" afterPath="$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" />
     </list>
     <ignored path="C:\wamp64\www\S3\miniprojetweb\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,14 +45,14 @@
       <file leaf-file-name="addProduit.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="714">
               <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editProduit.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editProduit.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="313">
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="157" column="94" lean-forward="false" selection-start-line="157" selection-start-column="94" selection-end-line="157" selection-end-column="94" />
+            <state relative-caret-position="-693">
+              <caret line="74" column="77" lean-forward="true" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
       </list>
     </option>
   </component>
@@ -350,7 +350,7 @@
       <workItem from="1512934840797" duration="5852000" />
       <workItem from="1512985164142" duration="1273000" />
       <workItem from="1512994055459" duration="189000" />
-      <workItem from="1512997428847" duration="83000" />
+      <workItem from="1512997428847" duration="407000" />
     </task>
     <task id="LOCAL-00001" summary="mieu">
       <created>1510568639499</created>
@@ -527,11 +527,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512994734827</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="mieux mtn">
+      <created>1512997520787</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1512997520787</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102154000" />
+    <option name="totallyTimeSpent" value="102478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -904,26 +911,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="157" column="94" lean-forward="false" selection-start-line="157" selection-start-column="94" selection-end-line="157" selection-end-column="94" />
+        <state relative-caret-position="313">
+          <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="714">
           <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+        <state relative-caret-position="-693">
+          <caret line="74" column="77" lean-forward="true" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
           <folding />
         </state>
       </provider>

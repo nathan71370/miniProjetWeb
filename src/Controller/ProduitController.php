@@ -78,7 +78,7 @@ class ProduitController implements ControllerProviderInterface
             {
                 $this->ProduitModel = new ProduitModel($app);
                 $this->ProduitModel->insertProduit($donnees);
-                return $app->redirect($app["url_generator"]->generate("produit.index"));
+                return $app->redirect($app["url_generator"]->generate("produit.showAllProduits"));
             }
         }
         else
