@@ -70,7 +70,7 @@ class PanierController implements ControllerProviderInterface
             $this->panierModel = new PanierModel($app);
             $this->panierModel->deletePanier($id,$user_id);
         }
-        return $app->redirect($app["url_generator"]->generate("panier.index"));
+        return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
     }
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];

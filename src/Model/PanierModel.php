@@ -93,18 +93,6 @@ class PanierModel {
             ->setParameter(2, $donnees['user_id']);
         return $queryBuilder->execute();
     }
-    public function updatePanier($donnees) {
-        $queryBuilder = new QueryBuilder($this->db);
-        $queryBuilder
-            ->update('paniers')
-            ->set('quantite', 'quantite-1')
-            ->where('id= ?')
-            ->andWhere('user_id= ?')
-            ->setParameter(0, $donnees['quantite'])
-            ->setParameter(1, $donnees['id'])
-            ->setParameter(2, $donnees['user_id']);
-        return $queryBuilder->execute();
-    }
 
     public function deletePanier($id,$user_id) {
         $queryBuilder = new QueryBuilder($this->db);

@@ -48,7 +48,7 @@ class CommandeController implements ControllerProviderInterface
         $this->commandeModel = new CommandeModel($app);
         $this->paniersModel = new PanierModel($app);
         $this->commandeModel->addCommandeWithTransaction($user_id);
-        return $app->redirect($app["url_generator"]->generate("panier.index"));
+        return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
     }
 
     public function removeCommande (Application $app,$id) {
