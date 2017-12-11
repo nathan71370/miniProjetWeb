@@ -83,7 +83,7 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
 });
 
 //MiddleWare pour tester la validité du token
-$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+/*$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     $methode = $request->get("_method");
     if ($methode == "put" || $methode == "delete" || $methode == "post") {
         $token = $request->get("_csrf_token") ? $request->get("_csrf_token")  : null;
@@ -97,7 +97,7 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
 //            return $app->redirect($app["url_generator"]->generate("user.login"));
 //        }
     }
-});
+});*/
 
 
 //On lance l'application

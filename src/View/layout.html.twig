@@ -10,7 +10,6 @@
     <script src="{{ asset('assets/js/vendor/modernizr.js') }}"></script>
   </head>
   <body>
-
 {% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
   {% include "nav_backOff.html.twig" %}
 {% elseif   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_CLIENT' %}

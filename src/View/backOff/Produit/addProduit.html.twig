@@ -33,7 +33,7 @@
                 {% endif %}
             </label>
             <label>Photo
-                <input name="photo"  type="text"  size="18" value="{{donnees.photo|default('')}}"/>
+                <input name="photo"  type="file"  size="18" value="{{donnees.photo|default('')}}"/>
                 {% if erreurs.photo is defined %}
                     <small class="error">{{erreurs.photo}}</small>
                 {% endif %}

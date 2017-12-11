@@ -99,7 +99,7 @@ class ProduitController implements ControllerProviderInterface
             $this->panierModel = new PanierModel($app);
             $this->panierModel->deletePanier($id,$user_id);
             $this->produitModel->deleteProduit($id);
-            return $app->redirect($app["url_generator"]->generate("produit.index"));
+            return $app->redirect($app["url_generator"]->generate("produit.showAllProduits"));
         }
         else
             return $app->abort(404, 'error Pb id form Delete');
@@ -155,7 +155,7 @@ class ProduitController implements ControllerProviderInterface
             {
                 $this->ProduitModel = new ProduitModel($app);
                 $this->ProduitModel->updateProduit($donnees);
-                return $app->redirect($app["url_generator"]->generate("produit.index"));
+                return $app->redirect($app["url_generator"]->generate("produit.showAllProduits"));
             }
         }
         else
