@@ -91,7 +91,7 @@ class UserController implements ControllerProviderInterface {
                 return $app->redirect($app["url_generator"]->generate("produit.showAllProduits"));
             }
 			else{
-                return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
+                return $app->redirect($app["url_generator"]->generate("accueil"));
             }
 		}
 		else
@@ -104,7 +104,7 @@ class UserController implements ControllerProviderInterface {
 	{
 		$app['session']->clear();
 		$app['session']->getFlashBag()->add('msg', 'vous êtes déconnecté');
-		return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
+		return $app->redirect($app["url_generator"]->generate("accueil"));
 	}
 
     public function validFormUpdate(Application $app) {
