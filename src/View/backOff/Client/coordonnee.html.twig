@@ -10,8 +10,15 @@
                     {% if erreurs.login is defined %}
                         <small class="error">{{erreurs.login}}</small>
                     {% endif %}
-                    <label for="password">Role</label>
-                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="role" id="role" value="{{donnees.role|default("")}}" class="modifier_role"/>
+                    <label>Role :
+                        <select name="role">
+                            <option value="ROLE_ADMIN" {% if donnees.role is defined and donnees.role=="ROLE_ADMIN" %} selected {% endif %}>ROLE_ADMIN</option>
+                            <option value="ROLE_CLIENT" {% if donnees.role is defined and donnees.role=="ROLE_CLIENT" %} selected {% endif %}>ROLE_CLIENT</option>
+                            <option value="ROLE_INVITE" {% if donnees.role is defined and donnees.role=="ROLE_INVITE" %} selected {% endif %}>ROLE_INVITE</option>
+                            <option value="ROLE_VENDEUR" {% if donnees.role is defined and donnees.role=="ROLE_VENDEUR" %} selected {% endif %}>ROLE_VENDEUR</option>
+
+                        </select>
+                    </label>
                     {% if erreurs.role is defined %}
                         <small class="error">{{erreurs.role}}</small>
                     {% endif %}
