@@ -92,4 +92,20 @@ class UserModel {
             ->setParameter(8, $id);
         return $queryBuilder->execute();
     }
+
+    public function showAllUser(){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->select('*')
+            ->from('users')
+            ->where('id!=1');
+        return $queryBuilder->execute();
+    }
+
+    public function deleteUser($id){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->delete('users')
+            ->where('id=:idc')
+            ->setParameter('idc',$id);
+        return $queryBuilder->execute();
+    }
 }

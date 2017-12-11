@@ -1,0 +1,60 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <div class="myFormLogin">
+        <form action="{{ path('user.validFormupdate') }}" method="post">
+            <div class="sign-in-form">
+                <h4 class="text-center">Modifier mon compte</h4>
+                <div class="large-6 small-12 columns">
+                    <label for="nom">Nom</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="nom" id="nom" value="{{donnees.nom|default("")}}" class="sign-in-form-nom"/>
+                    {% if erreurs.nom is defined %}
+                        <small class="error">{{erreurs.nom}}</small>
+                    {% endif %}
+                    <label for="login">Nom d'utilisateur</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="login" id="username" value="{{donnees.login|default("")}}" class="sign-in-form-username"/>
+                    {% if erreurs.login is defined %}
+                        <small class="error">{{erreurs.login}}</small>
+                    {% endif %}
+                    <label for="password">Mot de passe</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="password" name="password" id="password" class="sign-in-form-password"/>
+                    {% if erreurs.password is defined %}
+                        <small class="error">{{erreurs.password}}</small>
+                    {% endif %}
+                    <label for="password2">Confirmer le mot de passe</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="password" name="password2" id="password2" class="sign-in-form-password"/>
+                    {% if erreurs.password2 is defined %}
+                        <small class="error">{{erreurs.password2}}</small>
+                    {% endif %}
+                </div>
+                <div class="large-6 small-12 columns">
+                    <label for="email">Adresse Email</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="email" name="email" id="email" value="{{donnees.email|default("")}}" class="sign-in-form-email"/>
+                    {% if erreurs.email is defined %}
+                        <small class="error">{{erreurs.email}}</small>
+                    {% endif %}
+                    <label for="adresse">Adresse</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="adresse" id="adresse" value="{{donnees.adresse|default("")}}" class="sign-in-form-adresse"/>
+                    {% if erreurs.adresse is defined %}
+                        <small class="error">{{erreurs.adresse}}</small>
+                    {% endif %}
+                    <label for="ville">Ville</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="ville" id="ville" value="{{donnees.ville|default("")}}" class="sign-in-form-ville"/>
+                    {% if erreurs.ville is defined %}
+                        <small class="error">{{erreurs.ville}}</small>
+                    {% endif %}
+                    <label for="cp">Code Postal</label>
+                    <input style="border-radius: 12px 12px 12px 12px;" type="text" name="cp" id="cp" value="{{donnees.cp|default("")}}" class="sign-in-form-adresse"/>
+                    {% if erreurs.recaptcha is defined %}
+                        <small class="error">{{erreurs.recaptcha}}</small>
+                    {% endif %}
+                    {% if app.session.get('erreur') is not empty %}
+                        <div class="myError">{{ app.session.get('erreur') }}</div>
+                    {% endif %}
+                </div>
+
+                <input type="submit" name="connexion" class="sign-in-form-button myLoginButton" value="Modifier"/>
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

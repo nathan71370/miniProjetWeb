@@ -22,6 +22,13 @@ class UserController implements ControllerProviderInterface {
 		return $app["twig"]->render('login.html.twig');
 	}
 
+    public function showUser(Application $app)
+    {
+        $this->userModel=new UserModel($app);
+        $donnees= $this->userModel->showAllUser();
+        return $app["twig"]->render('backOff/Client/showClient.html.twig', ['donnees'=>$donnees]);
+    }
+
     public function updateUser(Application $app)
     {
         $this->userModel = new  UserModel($app);
@@ -130,6 +137,23 @@ class UserController implements ControllerProviderInterface {
         return $app["twig"]->render('frontOff/User/inscription.html.twig');
     }
 
+    public function deleteUser(Application $app, $id) {
+        $this->userModel = new UserModel($app);
+        $donnees = $this->userModel->getUser($id);
+        return $app["twig"]->render('backOff/Client/deleteClient.html.twig',['donnees'=>$donnees]);
+    }
+    public function validFormdeleteUser(Application $app, Request $req){
+        $id=$app->escape($req->get('id'));
+        if (is_numeric($id)) {
+            $this->userModel=new UserModel($app);
+            $this->userModel->deleteUser($id);
+            $donnees = $this->userModel->showAllUser();
+            return $app["twig"]->render('backOff/Client/showClient.html.twig',['donnees'=>$donnees]);
+        }
+        else
+            return $app->abort(404, 'error Pb id form Delete');
+    }
+
 	public function connect(Application $app) {
 		$controllers = $app['controllers_factory'];
 		$controllers->match('/', 'App\Controller\UserController::index')->bind('user.index');
@@ -139,6 +163,9 @@ class UserController implements ControllerProviderInterface {
         $controllers->get('/addUser', 'App\Controller\UserController::addUser')->bind('user.addUser');
         $controllers->post('/addUser', 'App\Controller\UserController::validFormAddUser')->bind('user.validFormAddUser');
         $controllers->get('/update', 'App\Controller\UserController::updateUser')->bind('user.update');
+        $controllers->get('/delete/{id}', 'App\Controller\UserController::deleteUser')->bind('user.delete')->assert('id', '\d+');
+        $controllers->delete('/delete', 'App\Controller\UserController::validFormDeleteUser')->bind('user.validFormDeleteUser');
+        $controllers->get('/showUser', 'App\Controller\UserController::showUser')->bind('user.show');
         $controllers->post('/update', 'App\Controller\UserController::validFormupdate')->bind('user.validFormupdate');
 
         return $controllers;
