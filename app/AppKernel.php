@@ -70,7 +70,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     $nomRoute=$request->get("_route");
 
-    if ($app['session']->get('roles') != 'ROLE_ADMIN'  && ($nomRoute=="commande.showAll" || $nomRoute=="user.show" || $nomRoute=="commande.exp" || $nomRoute=="commande.prep" || $nomRoute=="produit.addProduit" || $nomRoute=="produit.deleteProduit")) {
+    if ($app['session']->get('roles') != 'ROLE_ADMIN'  && ($nomRoute=="commande.showAll" || $nomRoute=="user.updateAdmin" ||  $nomRoute=="user.delete" ||  $nomRoute=="user.validFormDeleteUser" || $nomRoute=="user.validFormupdateAdmin" || $nomRoute=="user.show" || $nomRoute=="commande.exp" || $nomRoute=="commande.prep" || $nomRoute=="produit.addProduit" || $nomRoute=="produit.deleteProduit")) {
         return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
     }
     if ($app['session']->get('roles') == 'ROLE_ADMIN'  && ($nomRoute=="panier.index" || $nomRoute=="produit.showProduits")) {
@@ -83,21 +83,21 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
 });
 
 //MiddleWare pour tester la validité du token
-/*$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
-    $methode = $request->get("_method");
-    if ($methode == "put" || $methode == "delete" || $methode == "post") {
-        $token = $request->get("_csrf_token") ? $request->get("_csrf_token")  : null;
-        //if (!$token) return $app->redirect($app["url_generator"]->generate("user.login"));
-
-        $csrf_token = new CsrfToken('csrf_token', $token);
-        $csrf_token_ok = $app['csrf.token_manager']->isTokenValid($csrf_token);
-
-//        if (!$csrf_token_ok) {
-//            $app['session']->set('erreur', 'Erreur CSRF');
-//            return $app->redirect($app["url_generator"]->generate("user.login"));
-//        }
-    }
-});*/
+//$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+//    $methode = $request->get("_method");
+//    if ($methode == "put" || $methode == "delete" || $methode == "post") {
+//        $token = $request->get("_csrf_token") ? $request->get("_csrf_token")  : null;
+//        //if (!$token) return $app->redirect($app["url_generator"]->generate("user.login"));
+//
+//        $csrf_token = new CsrfToken('csrf_token', $token);
+//        $csrf_token_ok = $app['csrf.token_manager']->isTokenValid($csrf_token);
+//
+////        if (!$csrf_token_ok) {
+////            $app['session']->set('erreur', 'Erreur CSRF');
+////            return $app->redirect($app["url_generator"]->generate("user.login"));
+////        }
+//    }
+//});
 
 
 //On lance l'application

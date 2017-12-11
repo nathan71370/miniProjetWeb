@@ -93,6 +93,18 @@ class UserModel {
         return $queryBuilder->execute();
     }
 
+    public function updateUserAdmin($donnees, $id){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->update('users')
+            ->set('username','?')
+            ->set('roles','?')
+            ->where('id=?')
+            ->setParameter(0,$donnees['login'])
+            ->setParameter(1,$donnees['role'])
+            ->setParameter(2,$id);
+        return $queryBuilder->execute();
+    }
+
     public function showAllUser(){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->select('*')

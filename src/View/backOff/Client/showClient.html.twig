@@ -14,7 +14,7 @@
                     <td>{{user.id}}</td><td>{{user.username}}</td><td>{{user.password}}</td><td>{{user.roles}}</td><td>
                         {{user.email}}</td><td>{{user.nom}}</td><td>{{user.code_postal}}</td><td>{{user.ville}}</td><td>{{user.adresse}}</td>
                     <td>
-                        <a href="{{ path('user.update', {id: user.id}) }}">modifier</a>
+                        <a href="{{ path('user.updateAdmin', {id: user.id}) }}">modifier</a>
                         <a href="{{ path('user.delete', {id: user.id}) }}">supprimer</a>
                     </td>
                 </tr>

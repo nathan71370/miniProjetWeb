@@ -29,13 +29,42 @@ class UserController implements ControllerProviderInterface {
         return $app["twig"]->render('backOff/Client/showClient.html.twig', ['donnees'=>$donnees]);
     }
 
+    public function updateUserAdmin(Application $app, $id){
+            $this->userModel = new  UserModel($app);
+            $donnees=$this->userModel->getUser($id);
+            $donnees['id']=$id;
+            $donnees['login']=$donnees['username'];
+            $donnees['role']=$donnees['roles'];
+            return $app["twig"]->render('backOff/Client/coordonnee.html.twig',['donnees'=>$donnees]);
+    }
+
     public function updateUser(Application $app)
     {
         $this->userModel = new  UserModel($app);
-        $donnees = $this->userModel->getUser($app['session']->get('user_id'));
-        $donnees['login'] = $donnees['username'];
-        $donnees['cp'] = $donnees['code_postal'];
-        return $app["twig"]->render('frontOff/User/coordonnee.html.twig',['donnees'=>$donnees]);
+            $donnees = $this->userModel->getUser($app['session']->get('user_id'));
+            $donnees['login'] = $donnees['username'];
+            $donnees['cp'] = $donnees['code_postal'];
+            return $app["twig"]->render('frontOff/User/coordonnee.html.twig',['donnees'=>$donnees]);
+    }
+
+    public function validFormUpdateAdmin(Application $app, Request $req) {
+        //$id=$app->escape($req->get('id'));
+        $donnees = [
+            'id' => htmlspecialchars($_POST['id']),
+            'login' => htmlspecialchars($_POST['login']), //$app['request']-> ne fonctionne plus sur silex 2.0
+            'role' => htmlspecialchars($_POST['role'])
+        ];
+        if ((! preg_match("/^[A-Za-z1-9 ]{4,100}/",$donnees['login']))) $erreurs['login']='Login composé de 4 lettres minimum';
+        if(!empty($erreurs))
+        {
+            return $app["twig"]->render('backOff/Client/coordonnee.html.twig',['donnees'=>$donnees,'erreurs'=>$erreurs]);
+        }
+        else
+        {
+            $this->userModel = new UserModel($app);
+            $this->userModel->updateUserAdmin($donnees,$donnees['id']);
+            return $app->redirect($app["url_generator"]->generate("user.show"));
+        }
     }
 
 	public function showCoordonnee(Application $app){
@@ -163,10 +192,12 @@ class UserController implements ControllerProviderInterface {
         $controllers->get('/addUser', 'App\Controller\UserController::addUser')->bind('user.addUser');
         $controllers->post('/addUser', 'App\Controller\UserController::validFormAddUser')->bind('user.validFormAddUser');
         $controllers->get('/update', 'App\Controller\UserController::updateUser')->bind('user.update');
+        $controllers->get('/update/{id}', 'App\Controller\UserController::updateUserAdmin')->bind('user.updateAdmin')->assert('id', '\d+');
         $controllers->get('/delete/{id}', 'App\Controller\UserController::deleteUser')->bind('user.delete')->assert('id', '\d+');
         $controllers->delete('/delete', 'App\Controller\UserController::validFormDeleteUser')->bind('user.validFormDeleteUser');
         $controllers->get('/showUser', 'App\Controller\UserController::showUser')->bind('user.show');
-        $controllers->post('/update', 'App\Controller\UserController::validFormupdate')->bind('user.validFormupdate');
+        $controllers->put('/update', 'App\Controller\UserController::validFormupdate')->bind('user.validFormupdate');
+        $controllers->post('/updateAdmin', 'App\Controller\UserController::validFormupdateAdmin')->bind('user.validFormupdateAdmin');
 
         return $controllers;
 	}
