@@ -176,8 +176,7 @@ class UserController implements ControllerProviderInterface {
         if (is_numeric($id)) {
             $this->userModel=new UserModel($app);
             $this->userModel->deleteUser($id);
-            $donnees = $this->userModel->showAllUser();
-            return $app["twig"]->render('backOff/Client/showClient.html.twig',['donnees'=>$donnees]);
+            return $app->redirect($app["url_generator"]->generate("user.show"));
         }
         else
             return $app->abort(404, 'error Pb id form Delete');
