@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="925d37c0-b7ee-496e-be08-f506609be080" name="Default" comment="mieux mtn">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.php" afterPath="$PROJECT_DIR$/app/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/nav_backOff.html.twig" afterPath="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" afterPath="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/nav_home.html.twig" afterPath="$PROJECT_DIR$/src/View/nav_home.html.twig" />
     </list>
     <ignored path="C:\wamp64\www\S3\miniprojetweb\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav_backOff.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nav_backOff.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
-              <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="43" />
+              <caret line="3" column="80" lean-forward="false" selection-start-line="3" selection-start-column="80" selection-end-line="3" selection-end-column="80" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#a#0;n#h1#0;n#li#0;n#ul#0;n#nav#0;n#!!top" expanded="true" />
               </folding>
@@ -78,11 +77,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav_frontOff.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nav_frontOff.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/nav_frontOff.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
-              <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+              <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_home.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/nav_home.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="83" lean-forward="true" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -124,19 +133,6 @@
             <state relative-caret-position="298">
               <caret line="75" column="146" lean-forward="false" selection-start-line="75" selection-start-column="146" selection-end-line="75" selection-end-column="146" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/UserModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2092">
-              <caret line="104" column="8" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-              <folding>
-                <marker date="1512998062334" expanded="true" signature="273:357" ph="SELECT id,us... users" />
-                <marker date="1512998062334" expanded="true" signature="609:682" ph="SELECT id,us... users" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -191,7 +187,6 @@
         <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
         <option value="$PROJECT_DIR$/S3projet2_v17.sql" />
         <option value="$PROJECT_DIR$/src/View/accueil.html.twig" />
-        <option value="$PROJECT_DIR$/src/View/nav_home.html.twig" />
         <option value="$PROJECT_DIR$/src/View/login.html.twig" />
         <option value="$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeDetail.html.twig" />
         <option value="$PROJECT_DIR$/src/View/frontOff/Commande/showCommandes.html.twig" />
@@ -218,9 +213,10 @@
         <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
         <option value="$PROJECT_DIR$/src/View/backOff/Client/coordonnee.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
-        <option value="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/src/View/nav_home.html.twig" />
         <option value="$PROJECT_DIR$/src/View/nav_frontOff.html.twig" />
+        <option value="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
       </list>
     </option>
   </component>
@@ -1391,11 +1387,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512997844082</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="mieux mtn">
+      <created>1512999490205</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1512999490205</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103808000" />
+    <option name="totallyTimeSpent" value="103932000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1530,13 +1533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/nav_home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="70" lean-forward="false" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -1805,21 +1801,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/nav_home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#a#0;n#h1#0;n#li#0;n#ul#0;n#nav#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="83" lean-forward="true" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/nav_frontOff.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/nav_backOff.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="80" lean-forward="false" selection-start-line="3" selection-start-column="80" selection-end-line="3" selection-end-column="80" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#0;n#h1#0;n#li#0;n#ul#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
