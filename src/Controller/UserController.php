@@ -51,7 +51,12 @@ class UserController implements ControllerProviderInterface {
 			$app['session']->set('username', $data['username']);
 			$app['session']->set('logged', 1);
 			$app['session']->set('user_id', $data['id']);
-			return $app->redirect($app["url_generator"]->generate("accueil"));
+			if($app['session']->get('roles')=='ROLE_ADMIN'){
+                return $app->redirect($app["url_generator"]->generate("produit.showAllProduits"));
+            }
+			else{
+                return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
+            }
 		}
 		else
 		{
@@ -63,7 +68,7 @@ class UserController implements ControllerProviderInterface {
 	{
 		$app['session']->clear();
 		$app['session']->getFlashBag()->add('msg', 'vous êtes déconnecté');
-		return $app->redirect($app["url_generator"]->generate("accueil"));
+		return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
 	}
 
     public function validFormUpdate(Application $app) {
@@ -114,7 +119,7 @@ class UserController implements ControllerProviderInterface {
             } else {
                 $this->userModel = new UserModel($app);
                 $this->userModel->addUser($donnees['login'],$donnees['password'], $donnees['email']);
-                return $app->redirect($app["url_generator"]->generate("accueil"));
+                return $app->redirect($app["url_generator"]->generate("user.login"));
             }
         }
         else{

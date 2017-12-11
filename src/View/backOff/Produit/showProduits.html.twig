@@ -1,10 +1,12 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
+<div style="margin-top: 20px;">
+    <a href="{{ path('produit.addProduit') }}"> Ajouter un produit </a>
     <div class="row">
         <table>
             <caption>Recapitulatifs des armes</caption>
             <thead>
-            <tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>ajouter</th>
+            <tr><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th><th>action</th>
             </tr>
             </thead>
             <tbody>
@@ -15,7 +17,8 @@
                         <img src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" width="150" height="150" >
                     </td>
                     <td>
-                        <a href="{{ path('panier.insert', {id: produit.id}) }}">ajouter au panier</a>
+                        <a href="{{ path('produit.editProduit', {id: produit.id}) }}">modifier</a>
+                        <a href="{{ path('produit.deleteProduit', {id: produit.id}) }}">supprimer</a>
                     </td>
                 </tr>
             {% endfor %}
